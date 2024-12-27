@@ -1,0 +1,10 @@
+@import "base/animations";
+@import "base/mixins";
+@import "base/variables";
+
+html {
+    font-family: "Inter", sans-serif;
+    --main-text-color: #2E2E2E;
+}
+
+@import "base/media";
