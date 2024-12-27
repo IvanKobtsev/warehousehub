@@ -18,12 +18,40 @@
 </head>
 
 <body>
-    <header>
-        
+    <header class="header">
+        <div class="header__nav-wrapper">
+            <a href="http://localhost:8000/"><img src="img/static/wh-logo.png" class="wh-logo"></img></a>
+            <div id="mainSectionNav" class="nav-element nav-element_selected">Главная</div>
+            <div id="warehousesSectionNav" class="nav-element">Склады</div>
+            <div id="aboutUsSectionNav" class="nav-element">О нас</div>
+            <div id="contactsSectionNav" class="nav-element">Контакты</div>
+        </div>
+        <div class="header__add-warehouse">
+            Добавить свой склад
+        </div>
     </header>
     
+    <section id="mainSection" class="section">
+        <div class="section__container">
+            <h2 class="section__header">Мы поможем найти <br>
+                <span class="highlighted-text">склад твоей мечты</span>
+            </h2>
+            <div class="section__text">
+                Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст 
+                Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст
+                Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под
+            </div>
+            <div class="main-points-container">
+                <div class="main-points-container__point">База 25 тыс. складов</div>
+                <div class="main-points-container__point">Поддержка 24/7</div>
+                <div class="main-points-container__point">Нашёл — написал</div>
+                <div class="main-points-container__point">Не знаешь, что выбрать — мы поможем</div>
+            </div>
+        </div>
     
-
+        <img src="img/static/main-page-image.png" id="mainSectionBG" class="section-bg-image"></img>
+    </section>
+    
     <script type="module" src="/js/index.js"></script>
 </body>
 

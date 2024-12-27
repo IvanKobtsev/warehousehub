@@ -3,8 +3,40 @@
 @import "base/variables";
 
 html {
-    font-family: "Inter", sans-serif;
     --main-text-color: #2E2E2E;
+    --bg-color: #F3F3F3;
+    --theme-color: #675CFF;
+    --theme-color-second: #DCDAFF;
+    background-color: var(--bg-color);
+    font-family: "Inter", sans-serif;
 }
 
+body {
+    margin: 0;
+}
+
+.section {
+    padding: 0 64px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__header {
+        font-size: 48px;
+        font-weight: 700;
+    }
+
+    &__text {
+        font-size: 18px;
+    }
+}
+
+.highlighted-text {
+    font-size: 52px;
+    color: var(--theme-color);
+}
+
+@import "sections/header";
+@import "sections/main";
 @import "base/media";

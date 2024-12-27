@@ -42,31 +42,3 @@
         rotate: 360deg;
     }
 }
-
-@keyframes goldGlowing {
-
-    0% {
-        filter: brightness(1.2);
-    }
-    40% {
-        box-shadow: 0px 0px 0px 0px #FCF6BA00;
-    }
-    45% {
-        filter: brightness(1.2);
-        box-shadow: -2px -2px 0px 0px #FCF6BA88;
-    }
-    50% {
-        filter: brightness(3);
-        box-shadow: 0px 0px 5px 0px #FCF6BAFF;
-    }
-    55% {
-        filter: brightness(1.2);
-        box-shadow: 2px 2px 0px 0px #FCF6BA88;
-    }
-    60% {
-        box-shadow: 0px 0px 0px 0px #FCF6BA00;
-    }
-    100% {
-        filter: brightness(1.2);
-    }
-}
