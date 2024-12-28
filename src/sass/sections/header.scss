@@ -28,6 +28,10 @@
         cursor: pointer;
         transition: .2s all;
 
+        &:hover {
+            background-color: var(--theme-color-light);
+        }
+
         &:active {
             scale: .95;
         }

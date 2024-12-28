@@ -1,0 +1,62 @@
+#popularWarehousesSection {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 564px;
+
+    .popular-warehouses-carousel {
+        margin-top: 40px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+.warehouse-card {
+    width: 764px;
+    height: 335px;
+    background-color: white;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-right: 32px;
+
+    &__header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    &__icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        border: 4px solid var(--theme-color);
+    }
+
+    &__header-text {
+        
+    }
+
+    &__name {
+
+    }
+
+    &__address {
+
+    }
+
+    &__properties {
+
+    }
+
+    &__property {
+
+    }
+
+    &__bottom-text {
+
+    }
+}

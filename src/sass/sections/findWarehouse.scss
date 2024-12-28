@@ -1,0 +1,83 @@
+#findWarehouseSection {
+    height: 785px;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+
+    .section-container {
+        position: relative;
+        width: 100%;
+        height: 700px;
+        border-radius: 32px;
+        background-color: white;
+        overflow: hidden;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .switch-button {
+        z-index: 10;
+        width: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 64px;
+        border: 3px solid var(--theme-color);
+        border-radius: 32px;
+        background-color: white;
+        overflow: hidden;
+
+        &__left,
+        &__right {
+            box-sizing: border-box;
+            width: 180px;
+            height: 100%;
+            font-size: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--theme-color);
+            cursor: pointer;
+        }
+    }
+
+    .switch-left .switch-button__left,
+    .switch-right .switch-button__right {
+        color: white;
+        background-color: var(--theme-color);
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: url('../img/svg/find-warehouse.svg');
+        left: 0;
+        top: -115px;
+        width: 751px;
+        height: 1123px;
+        background-repeat: no-repeat;
+    }
+}
+
+.filter-button {
+    z-index: 10;
+    width: 64px;
+    height: 64px;
+    background: url('../img/svg/filter.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: var(--theme-color);
+    border-radius: 18px;
+    margin-left: 18px;
+}
+
+#yandexMap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--theme-color);
+    left: 0;
+    top: 0;
+}

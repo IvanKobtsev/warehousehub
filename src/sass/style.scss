@@ -6,6 +6,7 @@ html {
     --main-text-color: #2E2E2E;
     --bg-color: #F3F3F3;
     --theme-color: #675CFF;
+    --theme-color-light: #786eff;
     --theme-color-second: #DCDAFF;
     background-color: var(--bg-color);
     font-family: "Inter", sans-serif;
@@ -13,18 +14,23 @@ html {
 
 body {
     margin: 0;
+    box-sizing: border-box;
+    padding-bottom: 64px;
 }
 
 .section {
+    width: 100%;
     padding: 0 64px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 40px;
 
     &__header {
         font-size: 48px;
         font-weight: 700;
+        margin: 0;
     }
 
     &__text {
@@ -39,4 +45,6 @@ body {
 
 @import "sections/header";
 @import "sections/main";
+@import "sections/findWarehouse";
+@import "sections/popularWarehouses";
 @import "base/media";
