@@ -1,3 +1,22 @@
-let body = document.querySelector('body');
+const body = document.querySelector('body'),
+    header = document.querySelector('header'),
+    navWrapper = document.querySelector('.header__nav-wrapper'),
+    mainSectionNav = document.getElementById('mainSectionNav'),
+    warehousesSectionNav = document.getElementById('warehousesSectionNav'),
+    aboutUsSectionNav = document.getElementById('aboutUsSectionNav'),
+    contactsSectionNav = document.getElementById('contactsSectionNav'),
+    addWarehouseSectionNav = document.getElementById('addWarehouseSectionNav'),
+    addWarehouseForm = document.getElementById('addWarehouseForm'),
+    addWarehouseFormSubmit = document.getElementById('addWarehouseFormSubmit'),
+    addWarehouseFormEmail = document.getElementById('addWarehouseFormEmail'),
+    addWarehouseFormName = document.getElementById('addWarehouseFormName'),
+    addWarehouseFormWarehouseName = document.getElementById('addWarehouseFormWarehouseName'),
+    addWarehouseFormWarehouseAddress = document.getElementById('addWarehouseFormWarehouseAddress'),
+    addWarehouseFormComment = document.getElementById('addWarehouseFormComment'),
+    findWarehouseSwitchLeft = document.getElementById('findWarehouseSwitchLeft'),
+    findWarehouseSwitchRight = document.getElementById('findWarehouseSwitchRight'),
+    findWarehouseView = document.getElementById('findWarehouseView');
 
-export { body }
+export { body, header, navWrapper, mainSectionNav, warehousesSectionNav, aboutUsSectionNav, contactsSectionNav, addWarehouseSectionNav, 
+    addWarehouseForm, addWarehouseFormSubmit, addWarehouseFormEmail, addWarehouseFormName, addWarehouseFormWarehouseName, 
+    addWarehouseFormWarehouseAddress, addWarehouseFormComment, findWarehouseSwitchLeft, findWarehouseSwitchRight, findWarehouseView }

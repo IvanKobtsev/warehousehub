@@ -35,6 +35,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            transition: .2s all;
+            cursor: pointer;
 
             &::after {
                 content: '';
@@ -44,6 +46,10 @@
                 background-position: center center;
                 background-repeat: no-repeat;
                 margin-left: 18px;
+            }
+
+            &:active {
+                scale: .98;
             }
         }
     }

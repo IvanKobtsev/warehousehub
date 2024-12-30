@@ -1,3 +1,3 @@
+const mandatory = '(обязательно)';
 
-
-export {  }
+export { mandatory }

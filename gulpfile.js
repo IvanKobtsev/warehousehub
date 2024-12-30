@@ -12,7 +12,7 @@ import htmlMinify from 'html-minifier';
 import webserver from 'gulp-webserver';
 
 gulp.task('server', function() {
-    gulp.src('dist')
+    gulp.src('dist', { allowEmpty: true })
       .pipe(webserver({
         open: true,
         livereload: true,
@@ -93,4 +93,4 @@ gulp.task('fonts', () => {
         .pipe(gulp.dest('dist/fonts'));
 });
 
-gulp.task('default', gulp.parallel('watch', 'server', 'styles', 'compress-js', 'compress-img', 'compress-pages', 'favicon', 'fonts'));
+gulp.task('default', gulp.parallel('watch', 'styles', 'compress-js', 'compress-img', 'compress-pages', 'favicon', 'fonts', 'server'));

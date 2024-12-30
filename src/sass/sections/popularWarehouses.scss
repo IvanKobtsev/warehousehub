@@ -70,6 +70,7 @@
     margin-right: 32px;
     padding: 22px;
     box-sizing: border-box;
+    cursor: pointer;
 
     &__header {
         display: flex;
@@ -128,5 +129,9 @@
         margin-top: 6px;
         font-size: 16px;
         color: var(--light-grey);
+    }
+
+    &:last-child {
+        margin-right: 0;
     }
 }

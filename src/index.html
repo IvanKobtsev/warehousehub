@@ -21,12 +21,12 @@
     <header class="header">
         <div class="header__nav-wrapper">
             <a href="http://localhost:8000/"><img src="img/static/wh-logo.png" class="wh-logo"></img></a>
-            <div id="mainSectionNav" class="nav-element nav-element_selected">Главная</div>
-            <div id="warehousesSectionNav" class="nav-element">Склады</div>
-            <div id="aboutUsSectionNav" class="nav-element">О нас</div>
-            <div id="contactsSectionNav" class="nav-element">Контакты</div>
+            <div id="mainSectionNav" data-scroll-to-id="mainSection" class="nav-element selected">Главная</div>
+            <div id="warehousesSectionNav" data-scroll-to-id="popularWarehousesSection" class="nav-element">Склады</div>
+            <div id="aboutUsSectionNav" data-scroll-to-id="aboutUsSection" class="nav-element">О нас</div>
+            <div id="contactsSectionNav" data-scroll-to-id="contactsSection" class="nav-element">Контакты</div>
         </div>
-        <div class="header__add-warehouse">
+        <div class="header__add-warehouse" id="addWarehouseSectionNav" data-scroll-to-id="addWarehouseSection">
             Добавить свой склад
         </div>
     </header>
@@ -50,7 +50,7 @@
             </div>
         </div>
     
-        <img src="img/static/main-page-image.png" id="mainSectionBG" class="section-bg-image"></img>
+        <img src="img/static/main-section-image.png" id="mainSectionBG" class="section-bg-image"></img>
     </section>
 
     <section id="findWarehouseSection" class="section">
@@ -59,14 +59,112 @@
         </h2>
     
         <div class="section-container">
-    
             <div class="switch-button switch-left">
-                <div class="switch-button__left">Список</div>
-                <div class="switch-button__right">Карта</div>
+                <div id="findWarehouseSwitchLeft" class="switch-button__left">Список</div>
+                <div id="findWarehouseSwitchRight" class="switch-button__right">Карта</div>
             </div>
             <div class="filter-button"></div>
-        
-            <div id="yandexMap"></div>
+            <div class="filters-form">
+                
+                <div class="select-wrapper">
+                    Город
+                    <select class="select">
+                        <option value="">Москва</option>
+                        <option value="">Санкт-Петербург</option>
+                        <option value="">Томск</option>
+                    </select>
+                </div>
+                <div class="range-wrapper">
+                    Площадь
+                    <div class="inline-input">
+                        от
+                        <div class="inline-range-wrapper"><input class="range range_square" type="text" id="rangeSquareMin" placeholder="300" /></div>
+                        до
+                        <div class="inline-range-wrapper"><input class="range range_square" type="text" id="rangeSquareMax" placeholder="99999999" /></div>
+                    </div>
+                </div>
+                <div class="select-wrapper">
+                    Доставка
+                    <select class="select">
+                        <option value="">Курьером</option>
+                        <option value="">Силами продавца</option>
+                        <option value="">Силами боженьки</option>
+                        <option value="">Силами своими</option>
+                    </select>
+                </div>
+                <div class="select-wrapper">
+                    Тип склада
+                    <select class="select">
+                        <option value="">Обычный</option>
+                        <option value="">Необычный</option>
+                        <option value="">Эпический</option>
+                        <option value="">Легендарный</option>
+                        <option value="">Ахеренный</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="findWarehouseView" class="left-view">
+                <div class="view-half">
+                    <div class="warehouses-list">
+                        <div class="warehouse-card">
+                            <div class="warehouse-card__header">
+                                <img class="warehouse-card__icon" src="img/dev-only/logo 2.png"></img>
+                                <div class="warehouse-card__header-text">
+                                    <div class="warehouse-card__name">ФулФилин</div>
+                                    <div class="warehouse-card__address">г. Электросталь, ул Рабочая, строение 1</div>
+                                </div>
+                            </div>
+                            <div class="warehouse-card__properties">
+                                <div class="warehouse-card__property">Обычный тип</div>
+                                <div class="warehouse-card__property">Доставка силами продавца</div>
+                                <div class="warehouse-card__property">Доставка курьером</div>
+                                <div class="warehouse-card__property">Доставка из склада WB</div>
+                            </div>
+                        </div>
+                        <div class="warehouse-card">
+                            <div class="warehouse-card__header">
+                                <img class="warehouse-card__icon" src="img/dev-only/logo 2.png"></img>
+                                <div class="warehouse-card__header-text">
+                                    <div class="warehouse-card__name">ФулФилин</div>
+                                    <div class="warehouse-card__address">г. Электросталь, ул Рабочая, строение 1</div>
+                                </div>
+                            </div>
+                            <div class="warehouse-card__properties">
+                                <div class="warehouse-card__property">Обычный тип</div>
+                                <div class="warehouse-card__property">Доставка силами продавца</div>
+                                <div class="warehouse-card__property">Доставка курьером</div>
+                                <div class="warehouse-card__property">Доставка из склада WB</div>
+                            </div>
+                        </div>
+                        <div class="warehouse-card">
+                            <div class="warehouse-card__header">
+                                <img class="warehouse-card__icon" src="img/dev-only/logo 2.png"></img>
+                                <div class="warehouse-card__header-text">
+                                    <div class="warehouse-card__name">ФулФилин</div>
+                                    <div class="warehouse-card__address">г. Электросталь, ул Рабочая, строение 1</div>
+                                </div>
+                            </div>
+                            <div class="warehouse-card__properties">
+                                <div class="warehouse-card__property">Обычный тип</div>
+                                <div class="warehouse-card__property">Доставка силами продавца</div>
+                                <div class="warehouse-card__property">Доставка курьером</div>
+                                <div class="warehouse-card__property">Доставка из склада WB</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pagination-block">
+                        <div class="page selected" data-page="1">1</div>
+                        <div class="page" data-page="2">2</div>
+                        <div class="page" data-page="3">3</div>
+                        <div class="page" data-page="4">4</div>
+                        <div class="page" data-page="5">5</div>
+                    </div>
+                </div>
+                <div class="view-half">
+                    <div id="yandexMap"></div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -196,13 +294,13 @@
                 добавления вашего склада в нашу систему</div>
         </div>
         <div class="section__container">
-            <form class="add-warehouse-form">
-                <input type="text" class="default-input" placeholder="Ваше имя" />
-                <input type="text" class="default-input" placeholder="Ваша почта" />
-                <input type="text" class="default-input" placeholder="Название вашего склада" />
-                <input type="text" class="default-input"  placeholder="Адрес вашего склада" />
-                <textarea type="text" class="multiline-input" placeholder="Комментарий (необязательно)"></textarea>
-                <input type="submit" class="submit-button" value="Отправить" />
+            <form id="addWarehouseForm" class="add-warehouse-form">
+                <input id="addWarehouseFormName" type="text" class="default-input" placeholder="Ваше имя" />
+                <input id="addWarehouseFormEmail" type="text" class="default-input" placeholder="Ваша почта" />
+                <input id="addWarehouseFormWarehouseName" type="text" class="default-input" placeholder="Название вашего склада" />
+                <input id="addWarehouseFormWarehouseAddress" type="text" class="default-input"  placeholder="Адрес вашего склада" />
+                <textarea id="addWarehouseFormComment" type="text" class="multiline-input" placeholder="Комментарий (необязательно)"></textarea>
+                <input id="addWarehouseFormSubmit" type="submit" class="submit-button" value="Отправить" />
             </form>
             <img src="img/static/add-warehouse-section-image.png" class="section-bg-image" />
         </div>

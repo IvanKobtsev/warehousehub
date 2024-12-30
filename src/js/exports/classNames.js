@@ -1,3 +1,4 @@
+const selected = 'selected',
+    invalid = 'invalid';
 
-
-export {  }
+export { selected, invalid }
