@@ -2,7 +2,6 @@
     height: 785px;
     flex-direction: column;
     align-items: flex-start;
-    position: relative;
 
     .section-container {
         position: relative;
@@ -52,7 +51,7 @@
         content: "";
         position: absolute;
         z-index: -1;
-        background: url('../img/svg/find-warehouse.svg');
+        background: url('../img/svg/blot-find-warehouse.svg');
         left: 0;
         top: -115px;
         width: 751px;
@@ -65,7 +64,7 @@
     z-index: 10;
     width: 64px;
     height: 64px;
-    background: url('../img/svg/filter.svg');
+    background: url('../img/svg/filter-icon.svg');
     background-repeat: no-repeat;
     background-position: center center;
     background-color: var(--theme-color);

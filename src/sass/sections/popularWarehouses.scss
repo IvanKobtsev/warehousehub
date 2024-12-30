@@ -5,16 +5,62 @@
     height: 564px;
 
     .popular-warehouses-carousel {
+
         margin-top: 40px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
+        position: relative;
+        width: 100vw;
+        translate: -64px 0;
+
+        .carousel-cards-wrapper {
+            
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-x: scroll;
+            padding: 0 64px;
+            box-sizing: border-box;
+
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(to right, var(--bg-color) 20%, var(--bg-color-transparent) 100%);
+        }
+
+        // &::after {
+        //     content: '';
+        //     position: absolute;
+        //     top: 0;
+        //     right: 0;
+        //     width: 100px;
+        //     height: 100%;
+        //     background: linear-gradient(to left, var(--theme-color-second) 20%, var(--theme-color-second-transparent) 100%);
+        // }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: url('../img/svg/blot-popular-warehouses.svg');
+        right: 0;
+        top: -360px;
+        width: 946px;
+        height: 1122px;
+        background-repeat: no-repeat;
     }
 }
 
 .warehouse-card {
-    width: 764px;
-    height: 335px;
+    min-width: 764px;
+    height: fit-content;
+    color: var(--main-text-color);
     background-color: white;
     border-radius: 32px;
     display: flex;
@@ -22,11 +68,14 @@
     justify-content: center;
     align-items: flex-start;
     margin-right: 32px;
+    padding: 22px;
+    box-sizing: border-box;
 
     &__header {
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        height: 60px;
     }
 
     &__icon {
@@ -34,29 +83,50 @@
         height: 60px;
         border-radius: 50px;
         border: 4px solid var(--theme-color);
+        margin-right: 18px;
     }
 
     &__header-text {
-        
+        height: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
     }
 
     &__name {
+        font-size: 24px;
+        font-weight: 700;
 
     }
 
     &__address {
-
+        font-size: 16px;
     }
 
     &__properties {
-
+        margin-top: 22px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: start;
+        flex-wrap: wrap;
     }
 
     &__property {
-
+        margin-right: 16px;
+        margin-bottom: 16px;
+        padding: 14px 18px;
+        box-sizing: border-box;
+        width: fit-content;
+        height: fit-content;
+        border-radius: 14px;
+        border: 1px solid var(--main-text-color);
+        cursor: pointer;
     }
 
     &__bottom-text {
-
+        margin-top: 6px;
+        font-size: 16px;
+        color: var(--light-grey);
     }
 }

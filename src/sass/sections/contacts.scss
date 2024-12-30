@@ -1,0 +1,71 @@
+#contactsSection {
+
+    height: 900px;
+    margin-bottom: 120px;
+
+    .section__header {
+        margin-bottom: 64px;
+    }
+
+    .contact {
+        width: 896px;
+        height: 326px;
+        padding: 48px;
+        box-sizing: border-box;
+        color: white;
+        border-radius: 36px;
+
+        &__header {
+            font-size: 32px;
+            margin-bottom: 22px;
+        }
+
+        &__link {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 48px;
+        }
+
+        &__button {
+            font-size: 22px;
+            font-weight: 600;
+            border-radius: 16px;
+            height: 70px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &::after {
+                content: '';
+                width: 100px;
+                height: 30px;
+                background: url('../img/svg/arrow-right.svg');
+                background-position: center center;
+                background-repeat: no-repeat;
+                margin-left: 18px;
+            }
+        }
+    }
+
+    #emailLink {
+        margin-bottom: 64px;
+        background-color: #938BFF;
+
+        .contact__button {
+            background-color: #675CFF;
+        }
+    }
+
+    #telegramLink {
+        background-color: #289FDB;
+    
+        .contact__button {
+            background-color: #2FB7FC;
+        }
+    }
+
+    .section-bg-image {
+        translate: 0 80px;
+    }
+}

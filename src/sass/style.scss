@@ -4,10 +4,14 @@
 
 html {
     --main-text-color: #2E2E2E;
-    --bg-color: #F3F3F3;
+    --light-grey: #BFBFBF;
+    --grey: #9C9C9C;
+    --bg-color: #F3F3F3FF;
+    --bg-color-transparent: #F3F3F300;
     --theme-color: #675CFF;
     --theme-color-light: #786eff;
-    --theme-color-second: #DCDAFF;
+    --theme-color-second: #DCDAFFFF;
+    --theme-color-second-transparent: #DCDAFF00;
     background-color: var(--bg-color);
     font-family: "Inter", sans-serif;
 }
@@ -15,7 +19,6 @@ html {
 body {
     margin: 0;
     box-sizing: border-box;
-    padding-bottom: 64px;
 }
 
 .section {
@@ -26,6 +29,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 40px;
+    position: relative;
 
     &__header {
         font-size: 48px;
@@ -36,6 +40,11 @@ body {
     &__text {
         font-size: 18px;
     }
+
+    &:last-child {
+        margin-bottom: 0 !important;
+        display: none;
+    }
 }
 
 .highlighted-text {
@@ -43,8 +52,50 @@ body {
     color: var(--theme-color);
 }
 
+.add-warehouse-form {
+    width: 896px;
+}
+
+.submit-button,
+.multiline-input,
+.default-input {
+    width: 100%;
+    height: 70px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 16px;
+    padding-left: 18px;
+    margin-bottom: 18px;
+    border: none;
+    box-sizing: border-box;
+
+    &::placeholder {
+        font-family: 'Inter';
+        color: #9C9C9C;
+    }
+}
+
+.multiline-input {
+    height: 188px;
+    padding-top: 22px;
+    resize: none;
+}
+
+.submit-button {
+    width: 100%;
+    height: 70px;
+    font-size: 18px;
+    background-color: var(--theme-color);
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+}
+
 @import "sections/header";
 @import "sections/main";
 @import "sections/findWarehouse";
 @import "sections/popularWarehouses";
+@import "sections/aboutUs";
+@import "sections/contacts.scss";
+@import "sections/addWarehouse.scss";
 @import "base/media";

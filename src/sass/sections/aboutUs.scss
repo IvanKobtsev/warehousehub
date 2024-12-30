@@ -1,0 +1,139 @@
+#aboutUsSection {
+    height: 860px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 60px;
+
+    .section__header {
+        margin-bottom: 38px;
+    }
+    
+    .about-us-grid {
+        height: 628px;
+        width: 100%;
+        color: white;
+
+        &__first-row,
+        &__second-row {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__tile {
+            height: 300px;
+            border-radius: 36px;
+            box-sizing: border-box;
+        }
+    
+        #thousandsWarehousesGridTile {
+            position: relative;
+            overflow: hidden;
+            padding: 65px 0 0 48px;
+            width: 39%;
+            background-color: #938BFF;
+
+            .about-us-grid__tile-header {
+                font-size: 64px;
+                font-weight: 900;
+            }
+
+            .about-us-grid__tile-text {
+                margin-top: 40px;
+                font-size: 38px;
+                font-weight: 600;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 187px;
+                height: 171px;
+                background: url('../../img/svg/about-us-briefcase.svg');
+                right: 0;
+                top: 0;
+                background-repeat: no-repeat;
+            }
+        }
+
+        #warehouseImageGridTile {
+            width: 19%;
+            background: url('../../img/static/about-us-warehouse.png');
+            background-position: center center;
+            background-size: cover;
+        }
+
+        #thousandsClientsGridTile {
+            padding: 74px 0 0 48px;
+            width: 39%;
+            background-color: #BBB4FF;
+
+            .about-us-grid__tile-text {
+                font-size: 42px;
+                font-weight: 600;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 265px;
+                height: 279px;
+                background: url('../../img/static/russia-silhouette.png');
+                right: 60px;
+                top: 235px;
+                background-repeat: no-repeat;
+            }
+        }
+
+        &__second-row {
+            margin-top: 28px;
+        }
+
+        #warehouseHubGridTile {
+            padding: 64px 64px 0 64px;
+            width: 73%;
+            background-color: var(--theme-color);
+            display: flex;
+
+
+            .about-us-grid__tile-header {
+                font-size: 54px;
+                font-weight: 900;
+                margin: 0;
+            }
+
+            .about-us-grid__tile-text {
+                margin-top: 24px;
+                font-size: 22px;
+                font-weight: 600;
+            }
+
+            .about-us-grid__icon {
+                width: 128px;
+                height: 128px;
+            }
+        }
+
+        #workersImageGridTile {
+            width: 25%;
+            background: url('../img/static/about-us-workers.png');
+            background-position: center center;
+            background-size: cover;
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: url('../../img/svg/blot-about-us.svg');
+        left: 0;
+        top: 20px;
+        width: 762px;
+        height: 942px;
+        background-repeat: no-repeat;
+    }
+}

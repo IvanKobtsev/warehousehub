@@ -1,0 +1,48 @@
+#addWarehouseSection {
+
+    height: 900px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    
+    .section {
+        
+        &__header-container {
+            color: white;
+            margin-top: 20px;
+        }
+
+        &__header-sub-text {
+            margin-top: 18px;
+            font-size: 26px;
+            margin-bottom: 58px;
+        }
+
+        &__container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .add-warehouse-form {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+            }
+        }
+    }
+    
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: url('../../img/svg/blot-bottom.svg');
+        left: 0;
+        top: -100px;
+        width: 1920px;
+        height: 1049px;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}
