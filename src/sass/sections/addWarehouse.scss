@@ -39,10 +39,11 @@
         z-index: -1;
         background: url('../../img/svg/blot-bottom.svg');
         left: 0;
-        top: -100px;
-        width: 1920px;
+        bottom: -40px;
+        width: 100vw;
         height: 1049px;
         background-repeat: no-repeat;
-        background-position: center center;
+        background-position: center bottom;
+        background-size: cover;
     }
 }

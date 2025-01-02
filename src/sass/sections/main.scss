@@ -15,6 +15,10 @@
         &__header {
             margin: 0;
         }
+
+        &__text {
+            margin-top: 32px;
+        }
     }
     
     &::after {
@@ -32,6 +36,8 @@
 
 .main-points-container {
     display: flex;
+    flex-wrap: wrap;
+    margin-top: 32px;
 
     &__point {
         padding: 14px 28px;
@@ -39,5 +45,6 @@
         border-radius: 18px;
         width: fit-content;
         margin-right: 16px;
+        margin-bottom: 16px;
     }
 }

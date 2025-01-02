@@ -13,6 +13,8 @@ html {
     --theme-color-light: #786eff;
     --theme-color-second: #DCDAFFFF;
     --theme-color-second-transparent: #DCDAFF00;
+    --telegram-color: #289FDB;
+    --whatsapp-color: #40C451;
     background-color: var(--bg-color);
     font-family: "Inter", sans-serif;
 }
@@ -132,6 +134,8 @@ body {
 .range {
     margin-top: 0;
     box-sizing: border-box;
+    width: 205px;
+    padding-right: 50px;
 }
 
 .select-wrapper {
@@ -172,7 +176,6 @@ body {
 
 .inline-input {
     margin-top: 10px;
-    width: 100%;
     height: 70px;
     display: flex;
     justify-content: flex-start;
@@ -192,9 +195,34 @@ body {
         &::after {
             content: "м²";
             position: absolute;
-            top: 20px;
-            right: 10px;
+            top: 24px;
+            right: 14px;
         }
+    }
+}
+
+.copiable {
+    position: relative;
+    width: fit-content;
+    color: black;
+    border: 1px solid black;
+    border-radius: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 14px 64px 14px 22px;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &::after {
+        content: '';
+        position: absolute;
+        right: 22px;
+        top: 50%;
+        translate: 0 -50%;
+        width: 19px;
+        height: 22px;
+        background: url('../img/svg/copy-icon.svg');
     }
 }
 
@@ -205,4 +233,5 @@ body {
 @import "sections/aboutUs";
 @import "sections/contacts.scss";
 @import "sections/addWarehouse.scss";
+@import "sections/modal.scss";
 @import "base/media";

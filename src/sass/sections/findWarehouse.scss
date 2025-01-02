@@ -1,6 +1,7 @@
 #findWarehouseSection {
     height: 785px;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-start;
     margin-bottom: 0;
 
@@ -16,6 +17,7 @@
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
+        z-index: 15;
     }
 
     .switch-button {
@@ -95,7 +97,7 @@
             width: 100%;
 
             &__property {
-                margin-bottom: 0 !important;
+                margin-bottom: 0;
             }
         }
     }
@@ -131,6 +133,16 @@
     background-color: white;
     border: 2px solid var(--theme-color);
     padding: 22px;
+    transition: .4s all;
+    opacity: 1;
+    max-height: 480px;
+    overflow-y: scroll;
+
+    &.hidden {
+        translate: 0 50px;
+        opacity: 0;
+        pointer-events: none;
+    }
 }
 
 #yandexMap {
@@ -162,12 +174,17 @@
         margin-left: 14px;
         background-color: var(--pagination-white);
         color: var(--theme-color);
+        transition: .4s all;
         cursor: pointer;
 
         &.selected {
             color: white;
             background-color: var(--theme-color);
             pointer-events: none;
+        }
+
+        &:active {
+            scale: .95;
         }
     }
 }

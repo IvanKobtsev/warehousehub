@@ -1,14 +1,414 @@
-@media (max-width: 1000px) {
+@media (max-width: 1680px) {
 
+    .section-bg-image {
+        scale: .8;
+    }
+
+    #thousandsClientsGridTile::after {
+        background-size: cover;
+        width: 200px !important;
+    }
+}
+
+@media (max-width: 1560px) {
+
+    #thousandsClientsGridTile {
+        margin-top: 28px;
+    }
+
+    #thousandsClientsGridTile,
+    #thousandsWarehousesGridTile {
+        width: 100% !important;
+    }
+
+    #warehouseImageGridTile {
+        display: none;
+    }
+
+    #warehouseHubGridTile {
+        width: 100% !important;
+    }
+
+    #workersImageGridTile {
+        display: none;
+    }
+    
+    .section-bg-image {
+        display: none;
+    }
+
+    #popularWarehousesSection {
+        margin-bottom: 0;
+    }
+
+    #aboutUsSection::after {
+        top: -25px !important;
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    #mainSection {
+        .section__container {
+            width: 100% !important;
+        }
+    }
+
+    #findWarehouseFilterForm {
+        left: 0 !important;
+    }
+
+    #contactsSection {
+        .contact {
+            width: 100%;
+        }
+    }
+    
+    .section {
+        &::after {
+            display: none !important;
+        }
+    }
+
+    #addWarehouseSection::after {
+        display: block !important;
+    }
     
 }
 
-@media (max-width: 800px) {
-    
+@media (max-width: 940px) {
+    .header {
+        height: 60px;
+        font-size: 14px;
+        padding: 0 18px;
 
-}
+    }
 
-@media (max-width: 576px) {
+    #contactsSectionNav {
+        display: none;
+    }
+
+    #addWarehouseSectionNav {
+        position: relative;
+        color: var(--theme-color);
+        min-width: 40px;
+        width: 40px;
+        height: 32px;
+        overflow: hidden;
+        margin-left: 26px;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            background-image: url('../img/svg/plus-icon.svg');
+            width: 14px;
+            height: 15px;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .wh-logo {
+        width: 38px;
+    }
+
+    .section {
+        padding: 0 22px;
+        margin-bottom: 22px;
     
+        &__header {
+            font-size: 32px;
+        }
+
+        &__text {
+            font-size: 14px;
+        }
+
+        &__container {
+            height: fit-content !important;
+        }
+    }
+
+    #mainSection {
+        height: fit-content;
+
+        .main-points-container {
+            margin-top: 20px;
+
+            &__point {
+                font-size: 12px;
+                padding: 12px;
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+    #findWarehouseSection {
+        height: auto !important;
+
+        .section-container {
+            height: 480px !important;
+            max-height: none !important;
+            min-height: fit-content !important;
+        }
+
+        .pagination-block .page {
+            width: 30px;
+            height: 30px;
+            font-size: 14px;
+            border-radius: 8px;
+        }
+
+        .switch-button {
+            border: 1px solid var(--theme-color);
+            height: 30px;
+
+            &__left,
+            &__right {
+                font-size: 12px;
+                width: 70px;
+            }
+        }
+
+        .view-half {
+            height: auto !important;
+        }
+
+        #findWarehouseView {
+            left: -22px;
+            .view-half {
+                padding: 0 22px;
+            }
+        }
+
+        .warehouses-list {
+            padding-top: 40px;
+        }
+    }
+
+    .warehouse-card {
+
+        padding: 16px 16px 8px 16px;
+        margin-bottom: 8px !important;
+        min-width: 100% !important;
+
+        &__header {
+            height: 45px;
+        }
+
+        &__name {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        &__address {
+            font-size: 12px;
+        }
+
+        &__icon {
+            width: 45px;
+            height: 45px;
+        }
+
+        &__properties {
+            margin-top: 8px;
+            width: 100%;
+            flex-wrap: nowrap !important;
+            overflow: scroll;
+            margin-bottom: 8px;
+
+        }
+
+        &__property {
+            margin-right: 8px !important;
+            margin-bottom: 0 !important;
+            font-size: 12px;
+            padding: 12px 8px;
+            white-space: nowrap;
+        }
+
+        &__bottom-text {
+            margin-top: 0 !important;
+            font-size: 12px !important;
+        }
+    }
+
+    #popularWarehousesSection {
+        margin-top: 18px;
+        justify-content: flex-start;
+
+        .warehouse-card__properties {
+            margin-top: 12px;
+        }
+
+        .popular-warehouses-carousel { 
+            margin-top: 0;
+            translate: -22px 0 !important;
+
+            &::before {
+                width: 22px !important;
+            }
+
+            .carousel-cards-wrapper {
+                padding: 22px !important;
+            }
+        }
+
+        .warehouse-card {
+            margin-right: 12px !important;
+            min-width: 95% !important;
+            
+            &:last-child {
+                margin-right: 0 !important  ;
+            }
+        }
+    }
+
+    .filter-button {
+        width: 30px;
+        height: 30px;
+        background-size: 14px;
+
+        &:active {
+            background-color: var(--theme-color-light);
+        }
+    }
+
+    .filters-form {
+        scale: .6;
+        translate: -20% -30%;
+    }
+
+    .highlighted-text {
+        font-size: 32px;
+    }
     
+    #popularWarehousesSection {
+        height: fit-content !important;
+    }
+
+    #aboutUsSection {
+        margin-bottom: 42px;
+
+        .section__header {
+            margin-bottom: 16px;
+        }
+
+        .about-us-grid { 
+            #thousandsWarehousesGridTile {
+                padding: 62px 48px 0 32px;
+
+                &::after {
+                    width: 100px;
+                    height: 100px;
+                    background-size: cover;
+                }
+
+                .about-us-grid {
+                    &__tile-header {
+                        font-size: 48px;
+                    }
+
+                    &__tile-text {
+                        font-size: 28px;
+                    }
+                }
+            }
+
+            #thousandsClientsGridTile {
+                padding: 36px 48px;
+
+                &::after {
+                    height: 130px;
+                    width: 310px !important;
+                    top: auto;
+                    bottom: 0;
+                    left: 50%;
+                    translate: -50% 0;
+                    background-image: url('../img/static/russia-silhouette-mobile.png');
+                }
+
+                .about-us-grid__tile-text {
+                    font-size: 32px;
+                }
+            }
+
+            #warehouseHubGridTile {
+                padding: 32px;
+
+                .about-us-grid {
+                    &__tile-header {
+                        display: none;
+                    }
+
+                    &__tile-text {
+                        font-size: 18px;
+                    }
+
+                    &__icon {
+                        display: none;
+                    }
+
+                    &__mobile-tile-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 100%;
+
+                        .mobile-header {
+                            font-size: 32px;
+                            font-weight: 900;
+                        }
+
+                        .mobile-header-icon {
+                            width: 64px;
+                            height: 64px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #contactsSection {
+        align-items: flex-start;
+        height: fit-content;
+
+        .section {
+            &__container {
+                width: 100%;
+            }
+
+            &__header {
+                margin-bottom: 20px;
+            }
+        }
+
+        .contact {
+            padding: 32px;
+            height: fit-content;
+            margin-bottom: 32px !important;
+
+            &__header {
+                font-size: 22px;
+            }
+
+            &__link {
+                font-size: 24px;
+                margin-bottom: 22px;
+            }
+
+            &__button {
+                font-size: 20px;
+
+                &::after {
+                    display: none;
+                }
+            }
+        }
+    }
 }

@@ -2,8 +2,6 @@ import * as classNames from "./classNames.js";
 import * as regexes from "./regexes.js";
 let abortController = new AbortController();
 
-// Static Functions
-
 function makeStruct(names) {
     var names = names.split(' ');
     var count = names.length;
@@ -13,6 +11,16 @@ function makeStruct(names) {
       }
     }
     return constructor;
+}
+
+function isScrollInRange(element, scroll) {
+    let rect = element.getBoundingClientRect();
+
+    return isInRange(scroll + 100, rect.top + scroll, rect.top + scroll + rect.height);
+}
+
+function isInRange(valueToCheck, min, max) {
+    return valueToCheck >= min && valueToCheck < max;
 }
 
 // Validators
@@ -48,4 +56,4 @@ function validateFill(textInput) {
     return true;
 }
 
-export { makeStruct, validateEmail, validatePhoneNumber, validateFill };
+export { makeStruct, isScrollInRange, isInRange, validateEmail, validatePhoneNumber, validateFill };

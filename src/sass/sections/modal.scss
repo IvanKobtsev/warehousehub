@@ -1,0 +1,206 @@
+.modal-dialog {
+
+    position: fixed;
+    z-index: 30;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    &.hidden {
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    .warehouse-card {
+        position: relative;
+        max-width: 1762px;
+        max-height: 976px;
+        padding: 48px;
+        cursor: auto;
+    
+        &:active {
+            scale: 1;
+        }
+
+        &__contacts {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        &__manager-info {
+            display: flex;
+            align-items: center;
+            margin-right: 36px;
+        }
+
+        &__manager-text-info {
+            max-width: 200px;
+        }
+
+        &__manager-name {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        &__manager-position {
+            font-size: 16px;
+        }
+
+        &__manager-photo {
+            margin-right: 18px;
+        }
+
+        &__manager-info,
+        &__phone-and-email {
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                right: -18px;
+                translate: 0 -50%;
+                width: 1px;
+                height: 100px;
+                background-color: var(--main-text-color);
+            }
+        }
+
+        &__phone-and-email { 
+            margin-right: 36px;
+        }
+
+        &__phone {
+            margin-bottom: 18px;
+        }
+
+        &__social-links {
+            display: flex;
+            flex-direction: column;
+        }        
+
+        &__tg-link,
+        &__wa-link {
+            position: relative;
+            width: fit-content;
+            border-radius: 18px;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 14px 64px 14px 22px;
+            width: fit-content;
+            box-sizing: border-box;
+            text-decoration: none;
+
+            &::after {
+                content: '';
+                position: absolute;
+                right: 22px;
+                top: 50%;
+                translate: 0 -50%;
+                width: 19px;
+                height: 19px;
+                background-size: cover;
+                background-position: center center;
+            }
+        }
+
+        &__tg-link {
+            color: var(--telegram-color);
+            border: 1px solid var(--telegram-color);
+            margin-bottom: 18px;
+            
+            &::after {
+                background-image: url('../img/static/telegram-logo.png');
+            }
+        }
+
+        &__wa-link {
+            color: var(--whatsapp-color);
+            border: 1px solid var(--whatsapp-color);
+            
+            &::after {
+                width: 24px;
+                height: 24px;
+                background-image: url('../img/static/whatsapp-logo.png');
+            }
+        }
+
+        &__photos-container {
+            width: 100%;
+            position: relative;
+        }
+
+        &__photos-wrapper {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow: scroll;
+            max-width: 100%;
+            margin-bottom: 32px;
+        }
+
+        &__photo {
+            max-width: 456px;
+            max-height: 326px;
+            border-radius: 18px;
+            margin-right: 32px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+
+        &__link-button {
+            position: relative;
+            width: fit-content;
+            max-width: 50%;
+            overflow: hidden;
+            padding: 14px 32px 14px 72px;
+            box-sizing: border-box;
+            background-color: var(--theme-color);
+            color: white;
+            border-radius: 18px;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 32px;
+                top: 50%;
+                translate: 0 -50%;
+                width: 18px;
+                height: 18px;
+                background: url('../img/svg/link-icon.svg');
+            }
+        }
+
+        &__bottom-text {
+            margin-bottom: 32px;
+        }
+
+        &__close-button {
+            position: absolute;
+            top: 48px;
+            right: 48px;
+            background: url('../img/svg/cross.svg');
+            background-position: center center;
+            background-size: 18px;
+            background-repeat: no-repeat;
+            background-color: #F0F0F0;
+            border-radius: 100px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+    }
+
+}

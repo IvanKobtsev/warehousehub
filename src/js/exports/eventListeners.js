@@ -27,19 +27,19 @@ function updateNav() {
     
     let scroll = window.scrollY;
 
-    if (scroll < 520) {
+    if (functions.isScrollInRange(domElements.mainSection, scroll)) {
         selectNavElement(domElements.mainSectionNav);
     }
-    else if (scroll >= 520 && scroll < 1970) {
+    else if (functions.isScrollInRange(domElements.warehousesSection, scroll)) {
         selectNavElement(domElements.warehousesSectionNav);
     }
-    else if (scroll >= 1970 && scroll < 2850) {
+    else if (functions.isScrollInRange(domElements.aboutUsSection, scroll)) {
         selectNavElement(domElements.aboutUsSectionNav);
     }
-    else if (scroll >= 2940 && scroll < 3830) {
+    else if (functions.isScrollInRange(domElements.contactsSection, scroll)) {
         selectNavElement(domElements.contactsSectionNav);
     }
-    else if (scroll >= 3830) {
+    else if (functions.isScrollInRange(domElements.addWarehouseSection, scroll)) {
         selectNavElement(domElements.addWarehouseSectionNav);
     }
 }
@@ -64,6 +64,14 @@ domElements.findWarehouseSwitchRight.addEventListener('click', (e) => {
     e.target.parentNode.classList.add('switch-right');
     domElements.findWarehouseView.classList.remove('left-view');
     domElements.findWarehouseView.classList.add('right-view');
+});
+
+domElements.findWarehouseFilterButton.addEventListener('click', () => {
+    domElements.findWarehouseFilterForm.classList.toggle('hidden');
+});
+
+domElements.findWarehouseView.addEventListener('click', () => {
+    domElements.findWarehouseFilterForm.classList.add('hidden');
 });
 
 // FORM

@@ -13,7 +13,6 @@
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- YANDEX MAPS -->
     <title>WarehouseHub</title>
 </head>
 
@@ -22,7 +21,7 @@
         <div class="header__nav-wrapper">
             <a href="http://localhost:8000/"><img src="img/static/wh-logo.png" class="wh-logo"></img></a>
             <div id="mainSectionNav" data-scroll-to-id="mainSection" class="nav-element selected">Главная</div>
-            <div id="warehousesSectionNav" data-scroll-to-id="popularWarehousesSection" class="nav-element">Склады</div>
+            <div id="warehousesSectionNav" data-scroll-to-id="findWarehouseSection" class="nav-element">Склады</div>
             <div id="aboutUsSectionNav" data-scroll-to-id="aboutUsSection" class="nav-element">О нас</div>
             <div id="contactsSectionNav" data-scroll-to-id="contactsSection" class="nav-element">Контакты</div>
         </div>
@@ -59,12 +58,12 @@
         </h2>
     
         <div class="section-container">
-            <div class="switch-button switch-left">
+            <div class="switch-button switch-right">
                 <div id="findWarehouseSwitchLeft" class="switch-button__left">Список</div>
                 <div id="findWarehouseSwitchRight" class="switch-button__right">Карта</div>
             </div>
-            <div class="filter-button"></div>
-            <div class="filters-form">
+            <div id="findWarehouseFilterButton" class="filter-button"></div>
+            <div id="findWarehouseFilterForm" class="filters-form hidden">
                 
                 <div class="select-wrapper">
                     Город
@@ -104,7 +103,7 @@
                 </div>
             </div>
 
-            <div id="findWarehouseView" class="left-view">
+            <div id="findWarehouseView" class="right-view">
                 <div class="view-half">
                     <div class="warehouses-list">
                         <div class="warehouse-card">
@@ -258,6 +257,10 @@
             <div class="about-us-grid__second-row">
                 <div id="warehouseHubGridTile" class="about-us-grid__tile">
                     <div class="about-us-grid__tile-text-container">
+                        <div class="about-us-grid__mobile-tile-header">
+                            <div class="mobile-header">Warehouse<br>Hub</div>
+                            <img src="img/static/about-us-wh-logo.png" class="mobile-header-icon" />        
+                        </div>
                         <div class="about-us-grid__tile-header">WarehouseHub</div>
                         <div class="about-us-grid__tile-text">Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст 
                             Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под текстВот тут нужен какой-то под текст 
@@ -276,12 +279,12 @@
             <div id="emailLink" class="contact">
                 <div class="contact__header">Почта</div>
                 <div class="contact__link">help@warehousehub.ru</div>
-                <div id="sendUsMail" class="contact__button">Отправить нам письмо</div>
+                <a href="mailto:help@warehousehub.ru" target="_blank" draggable="false" id="sendUsMail" class="contact__button">Отправить нам письмо</a>
             </div>
             <div id="telegramLink" class="contact">
                 <div class="contact__header">Telegram</div>
                 <div class="contact__link">@warehouse_hub_tg</div>
-                <div id="messageUs" class="contact__button">Написать нам</div>
+                <a href="https://t.me/warehouse_hub_tg" target="_blank" draggable="false" id="messageUs" class="contact__button">Написать нам</a>
             </div>
         </div>
         <img src="img/static/contacts-section-image.png" class="section-bg-image" />
@@ -306,9 +309,65 @@
         </div>
     </section>
 
-    <script src="https://api-maps.yandex.ru/v3/?apikey=8768d26d-7d21-403e-949d-2fac0add9ac2&lang=ru_RU"></script>
-    <script type="module" src="/js/index.js"></script>
-    
-</body>
+    <div id="warehouseDetailsDialog" class="modal-dialog hidden">
+        <div class="warehouse-card">
+            <div class="warehouse-card__close-button"></div>
+            <div class="warehouse-card__header">
+                <img class="warehouse-card__icon" src="img/dev-only/logo 2.png"></img>
+                <div class="warehouse-card__header-text">
+                    <div class="warehouse-card__name">ФулФилин</div>
+                    <div class="warehouse-card__address">г. Электросталь, ул Рабочая, строение 1</div>
+                </div>
+            </div>
+            <div class="warehouse-card__properties">
+                <div class="warehouse-card__property">Обычный тип</div>
+                <div class="warehouse-card__property">Доставка силами продовца</div>
+                <div class="warehouse-card__property">Доставка курьером</div>
+                <div class="warehouse-card__property">Доставка из склада WB</div>
+            </div>
+            <div class="warehouse-card__bottom-text">
+                Вот тут нужен какой-то под текст Вот тут нужен какой-то 
+                под текст Вот тут нужен какой-то под текст Вот тут нужен 
+                какой-то под текст Вот тут нужен какой-то под текст Вот тут 
+                нужен какой-то под текстВот тут нужен какой-то под текст 
+                Вот тут нужен какой-то под текст Вот тут нужен какой-то под 
+            </div>
+            <div class="warehouse-card__contacts">
+                <div class="warehouse-card__manager-info">
+                    <img src="./img/static/photo-profile.png" class="warehouse-card__manager-photo" />
+                    <div class="warehouse-card__manager-text-info">
+                        <div class="warehouse-card__manager-name">Зиновьев Олег Виктрович</div>
+                        <div class="warehouse-card__manager-position">менеджер по продажам</div>
+                    </div>
+                </div>
+                <div class="warehouse-card__phone-and-email">
+                    <div class="warehouse-card__phone copiable">+7 (900) 000-00-00</div>
+                    <div class="warehouse-card__email copiable">help@fulfilin.ru</div>
+                </div>
+                <div class="warehouse-card__social-links">
+                    <a href="https://t.me/fullfilin_help" target="_blank" class="warehouse-card__tg-link">https://t.me/fullfilin_help</a>
+                    <a href="https://wa.me/79000000000" target="_blank" class="warehouse-card__wa-link">+7 (900) 000-00-00</a>
+                </div>
+            </div>
+            <div class="warehouse-card__photos-container">
+                <div class="warehouse-card__photos-wrapper">
+                    <img src="./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
+                    <img src="./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
+                    <img src="./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
+                    <img src="./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
+                    <img src="./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
+                </div>
+            </div>
+            <a href="https://wms-front.intelligent-system.ru/" target="_blank" class="warehouse-card__link-button">
+                https://wms-front.intelligent-system.ru/
+            </a>
+        </div>
+        
+    </div>
 
+    <!-- YANDEX MAPS -->
+    <script src="https://api-maps.yandex.ru/v3/?apikey=8768d26d-7d21-403e-949d-2fac0add9ac2&lang=ru_RU"></script>
+    <!-- INDEX.JS -->
+    <script type="module" src="/js/index.js"></script>
+</body>
 </html>

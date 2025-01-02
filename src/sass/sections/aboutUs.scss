@@ -1,5 +1,5 @@
 #aboutUsSection {
-    height: 860px;
+    min-height: 860px;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
@@ -10,7 +10,7 @@
     }
     
     .about-us-grid {
-        height: 628px;
+        height: fit-content;
         width: 100%;
         color: white;
 
@@ -21,10 +21,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         &__tile {
-            height: 300px;
+            position: relative;
+            min-height: 300px;
             border-radius: 36px;
             box-sizing: border-box;
         }
@@ -32,7 +34,7 @@
         #thousandsWarehousesGridTile {
             position: relative;
             overflow: hidden;
-            padding: 65px 0 0 48px;
+            padding: 65px 48px 0 48px;
             width: 39%;
             background-color: #938BFF;
 
@@ -82,8 +84,8 @@
                 width: 265px;
                 height: 279px;
                 background: url('../../img/static/russia-silhouette.png');
-                right: 60px;
-                top: 170px;
+                right: 0;
+                top: 5px;
                 background-repeat: no-repeat;
             }
         }
@@ -93,27 +95,33 @@
         }
 
         #warehouseHubGridTile {
-            padding: 64px 64px 0 64px;
+            padding: 64px;
             width: 73%;
             background-color: var(--theme-color);
             display: flex;
 
+            .about-us-grid {
+                &__tile-header {
+                    font-size: 54px;
+                    font-weight: 900;
+                    margin: 0;
+                }
+                
+                &__tile-text {
+                    margin-top: 24px;
+                    font-size: 22px;
+                    font-weight: 600;
+                }
+                
+                &__icon {
+                    width: 128px;
+                    height: 128px;
+                    margin-left: 20px;
+                }
 
-            .about-us-grid__tile-header {
-                font-size: 54px;
-                font-weight: 900;
-                margin: 0;
-            }
-
-            .about-us-grid__tile-text {
-                margin-top: 24px;
-                font-size: 22px;
-                font-weight: 600;
-            }
-
-            .about-us-grid__icon {
-                width: 128px;
-                height: 128px;
+                &__mobile-tile-header {
+                    display: none;
+                }
             }
         }
 

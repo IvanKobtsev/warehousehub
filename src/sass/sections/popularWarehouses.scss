@@ -28,7 +28,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100px;
+            width: 64px;
             height: 100%;
             background: linear-gradient(to right, var(--bg-color) 20%, var(--bg-color-transparent) 100%);
         }
@@ -70,6 +70,7 @@
     margin-right: 32px;
     padding: 22px;
     box-sizing: border-box;
+    transition: .2s all;
     cursor: pointer;
 
     &__header {
@@ -83,12 +84,13 @@
         width: 60px;
         height: 60px;
         border-radius: 50px;
+        box-sizing: border-box;
         border: 4px solid var(--theme-color);
         margin-right: 18px;
     }
 
     &__header-text {
-        height: 60px;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -98,7 +100,6 @@
     &__name {
         font-size: 24px;
         font-weight: 700;
-
     }
 
     &__address {
@@ -122,7 +123,6 @@
         height: fit-content;
         border-radius: 14px;
         border: 1px solid var(--main-text-color);
-        cursor: pointer;
     }
 
     &__bottom-text {
@@ -133,5 +133,9 @@
 
     &:last-child {
         margin-right: 0;
+    }
+
+    &:active {
+        scale: .98;
     }
 }
