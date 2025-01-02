@@ -44,6 +44,38 @@ function updateNav() {
     }
 }
 
+async function sendForm(event) {
+
+    event.preventDefault();
+
+    let valid = true;
+
+    valid = functions.validateEmail(domElements.addWarehouseFormEmail);
+    valid = functions.validateFill(domElements.addWarehouseFormName) && valid;
+    valid = functions.validateFill(domElements.addWarehouseFormWarehouseName) && valid;
+    valid = functions.validateFill(domElements.addWarehouseFormWarehouseAddress) && valid;
+
+    if (valid) {
+        let response = await fetchRequests.sendAddWarehouseForm({
+            requester_name: domElements.addWarehouseFormName.value,
+            requester_email: domElements.addWarehouseFormEmail.value,
+            requester_warehouse_name: domElements.addWarehouseFormWarehouseName.value,
+            requester_warehouse_address: domElements.addWarehouseFormWarehouseAddress.value,
+            requester_comment: domElements.addWarehouseFormComment.value.length === 0 ? null : domElements.addWarehouseFormComment.value
+        });
+
+        if (response.ok) {
+            alert('Спасибо!');
+            domElements.addWarehouseFormName.value = domElements.addWarehouseFormEmail.value = domElements.addWarehouseFormWarehouseName.value = 
+            domElements.addWarehouseFormWarehouseAddress.value = domElements.addWarehouseFormComment.value = "";
+            window.location.reload();
+        }
+        else {
+            alert('Что-то пошло не так.');
+        }
+    }
+}
+
 domElements.mainSectionNav.addEventListener('click', navElementClick);
 domElements.warehousesSectionNav.addEventListener('click', navElementClick);
 domElements.aboutUsSectionNav.addEventListener('click', navElementClick);
@@ -76,27 +108,7 @@ domElements.findWarehouseView.addEventListener('click', () => {
 
 // FORM
 
-domElements.addWarehouseFormSubmit.addEventListener('click', (e) => {
-
-    e.preventDefault();
-
-    let valid = true;
-
-    valid = functions.validateEmail(domElements.addWarehouseFormEmail);
-    valid = functions.validateFill(domElements.addWarehouseFormName) && valid;
-    valid = functions.validateFill(domElements.addWarehouseFormWarehouseName) && valid;
-    valid = functions.validateFill(domElements.addWarehouseFormWarehouseAddress) && valid;
-
-    if (valid) {
-        fetchRequests.sendAddWarehouseForm({
-            name: domElements.addWarehouseFormName.value,
-            email: domElements.addWarehouseFormEmail.value,
-            warehouseName: domElements.addWarehouseFormWarehouseName,
-            warehouseAddress: domElements.addWarehouseFormWarehouseAddress,
-            comment: domElements.addWarehouseFormComment
-        });
-    }
-})
+domElements.addWarehouseFormSubmit.addEventListener('click', sendForm);
 domElements.addWarehouseFormEmail.addEventListener('focus', cancelInvalidStatus);
 domElements.addWarehouseFormName.addEventListener('focus', cancelInvalidStatus);
 domElements.addWarehouseFormWarehouseName.addEventListener('focus', cancelInvalidStatus);
