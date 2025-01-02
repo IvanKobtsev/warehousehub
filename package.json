@@ -20,10 +20,11 @@
     "gulp-sass": "^5.1.0",
     "gulp-uglify": "^3.0.2",
     "gulp-webserver": "^0.9.1",
-    "sass": "^1.72.0",
-    "http-server": "14.1.1"
+    "http-server": "14.1.1",
+    "sass": "^1.72.0"
   },
   "dependencies": {
+    "@yandex/ymaps3-default-ui-theme": "^0.0.19",
     "gulp-htmlmin": "^5.0.1",
     "htmlmin": "^0.0.7",
     "imagemin": "^9.0.0"

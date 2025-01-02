@@ -55,10 +55,14 @@
         height: 1122px;
         background-repeat: no-repeat;
     }
+
+    .warehouse-card {
+        max-width: 775px;
+    }
 }
 
 .warehouse-card {
-    min-width: 764px;
+    min-width: 700px;
     height: fit-content;
     color: var(--main-text-color);
     background-color: white;
@@ -73,6 +77,10 @@
     transition: .2s all;
     cursor: pointer;
 
+    div {
+        pointer-events: none;
+    }
+
     &__header {
         display: flex;
         justify-content: flex-start;
@@ -85,8 +93,12 @@
         height: 60px;
         border-radius: 50px;
         box-sizing: border-box;
-        border: 4px solid var(--theme-color);
+        // border: 4px solid var(--theme-color);
         margin-right: 18px;
+
+        &.hidden {
+            display: none;
+        }
     }
 
     &__header-text {
@@ -112,6 +124,7 @@
         justify-content: flex-start;
         align-items: start;
         flex-wrap: wrap;
+        pointer-events: all !important;
     }
 
     &__property {

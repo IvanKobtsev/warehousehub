@@ -1,4 +1,5 @@
 const selected = 'selected',
-    invalid = 'invalid';
+    invalid = 'invalid',
+    highlighted = 'highlighted-text';
 
-export { selected, invalid }
+export { selected, invalid, highlighted }

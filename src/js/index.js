@@ -1,5 +1,6 @@
 import * as yandexMap from "./exports/yandexMap.js";
 import * as eventListeners from "./exports/eventListeners.js";
+import * as functions from "./exports/functions.js";
 
-yandexMap.initMap();
 eventListeners.updateNav();
+functions.loadMainData();

@@ -22,9 +22,11 @@ const body = document.querySelector('body'),
     findWarehouseSwitchRight = document.getElementById('findWarehouseSwitchRight'),
     findWarehouseFilterButton = document.getElementById('findWarehouseFilterButton'),
     findWarehouseFilterForm = document.getElementById('findWarehouseFilterForm'),
-    findWarehouseView = document.getElementById('findWarehouseView');
+    findWarehouseView = document.getElementById('findWarehouseView'),
+    warehouseDetailsModalDialog = document.getElementById('warehouseDetailsDialog');
 
 export { body, header, navWrapper, mainSectionNav, mainSection, warehousesSectionNav, warehousesSection, aboutUsSectionNav, aboutUsSection, 
     contactsSectionNav, contactsSection, addWarehouseSectionNav, addWarehouseSection, addWarehouseForm, addWarehouseFormSubmit, 
     addWarehouseFormEmail, addWarehouseFormName, addWarehouseFormWarehouseName, addWarehouseFormWarehouseAddress, addWarehouseFormComment, 
-    findWarehouseSwitchLeft, findWarehouseSwitchRight, findWarehouseFilterButton, findWarehouseFilterForm, findWarehouseView }
+    findWarehouseSwitchLeft, findWarehouseSwitchRight, findWarehouseFilterButton, findWarehouseFilterForm, findWarehouseView,
+    warehouseDetailsModalDialog }

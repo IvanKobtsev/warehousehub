@@ -32,16 +32,16 @@
     
     <section id="mainSection" class="section">
         <div class="section__container">
-            <h2 class="section__header">
+            <h2 id="mainSectionHeader" class="section__header">
                 Мы поможем найти<br>
                 <span class="highlighted-text">склад твоей мечты</span>
             </h2>
-            <div class="section__text">
+            <div id="mainSectionText" class="section__text">
                 Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст 
                 Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст
                 Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под
             </div>
-            <div class="main-points-container">
+            <div id="mainSectionDescriptionCards" class="main-points-container">
                 <div class="main-points-container__point">База 25 тыс. складов</div>
                 <div class="main-points-container__point">Поддержка 24/7</div>
                 <div class="main-points-container__point">Нашёл — написал</div>
@@ -170,7 +170,7 @@
     <section id="popularWarehousesSection" class="section">
         <h2 class="section__header"><span class="highlighted-text">Популярные склады</span></h2>
         <div class="popular-warehouses-carousel">
-            <div class="carousel-cards-wrapper">
+            <div id="popularWarehousesSectionCarousel" class="carousel-cards-wrapper">
                 <div class="warehouse-card">
                     <div class="warehouse-card__header">
                         <img class="warehouse-card__icon" src="img/dev-only/logo 2.png"></img>
@@ -246,12 +246,12 @@
         <div class="about-us-grid">
             <div class="about-us-grid__first-row">
                 <div id="thousandsWarehousesGridTile" class="about-us-grid__tile">
-                    <div class="about-us-grid__tile-header">> 25 000</div>
+                    <div class="about-us-grid__tile-header">> <span id="aboutUsSectionAmountWarehouses">25 000</span></div>
                     <div class="about-us-grid__tile-text">складов на ваш вкус и цвет</div>
                 </div>
                 <div id="warehouseImageGridTile" class="about-us-grid__tile"></div>
                 <div id="thousandsClientsGridTile" class="about-us-grid__tile">
-                    <div class="about-us-grid__tile-text">Более <b>5 000</b><br>клиентов<br>по всей России</div>
+                    <div class="about-us-grid__tile-text">Более <b><span id="aboutUsSectionAmountClients">5 000</span></b><br>клиентов<br>по всей России</div>
                 </div>
             </div>
             <div class="about-us-grid__second-row">
@@ -262,7 +262,7 @@
                             <img src="img/static/about-us-wh-logo.png" class="mobile-header-icon" />        
                         </div>
                         <div class="about-us-grid__tile-header">WarehouseHub</div>
-                        <div class="about-us-grid__tile-text">Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст 
+                        <div id="aboutUsSectionDescription" class="about-us-grid__tile-text">Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст 
                             Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под текстВот тут нужен какой-то под текст 
                         </div>
                     </div>
@@ -278,13 +278,13 @@
             <h2 class="section__header"><span class="highlighted-text">Контакты</span></h2>
             <div id="emailLink" class="contact">
                 <div class="contact__header">Почта</div>
-                <div class="contact__link">help@warehousehub.ru</div>
-                <a href="mailto:help@warehousehub.ru" target="_blank" draggable="false" id="sendUsMail" class="contact__button">Отправить нам письмо</a>
+                <div id="contactsSectionEmailText" class="contact__link">help@warehousehub.ru</div>
+                <a id="contactsSectionEmailLink" href="mailto:help@warehousehub.ru" target="_blank" draggable="false" class="contact__button">Отправить нам письмо</a>
             </div>
             <div id="telegramLink" class="contact">
                 <div class="contact__header">Telegram</div>
-                <div class="contact__link">@warehouse_hub_tg</div>
-                <a href="https://t.me/warehouse_hub_tg" target="_blank" draggable="false" id="messageUs" class="contact__button">Написать нам</a>
+                <div id="contactsSectionTelegramText" class="contact__link">@warehouse_hub_tg</div>
+                <a id="contactsSectionTelegramLink" href="https://t.me/warehouse_hub_tg" target="_blank" draggable="false" class="contact__button">Написать нам</a>
             </div>
         </div>
         <img src="img/static/contacts-section-image.png" class="section-bg-image" />
@@ -311,33 +311,33 @@
 
     <div id="warehouseDetailsDialog" class="modal-dialog hidden">
         <div class="warehouse-card">
-            <div class="warehouse-card__close-button"></div>
+            <div id="fullCardCloseButton" class="warehouse-card__close-button"></div>
             <div class="warehouse-card__header">
-                <img class="warehouse-card__icon" src="img/dev-only/logo 2.png"></img>
+                <img id="fullCardIcon" class="warehouse-card__icon" src="img/dev-only/logo 2.png"></img>
                 <div class="warehouse-card__header-text">
-                    <div class="warehouse-card__name">ФулФилин</div>
-                    <div class="warehouse-card__address">г. Электросталь, ул Рабочая, строение 1</div>
+                    <div id="fullCardName" class="warehouse-card__name">ФулФилин</div>
+                    <div id="fullCardAddress" class="warehouse-card__address">г. Электросталь, ул Рабочая, строение 1</div>
                 </div>
             </div>
-            <div class="warehouse-card__properties">
+            <div id="fullCardProperties" class="warehouse-card__properties">
                 <div class="warehouse-card__property">Обычный тип</div>
                 <div class="warehouse-card__property">Доставка силами продовца</div>
                 <div class="warehouse-card__property">Доставка курьером</div>
                 <div class="warehouse-card__property">Доставка из склада WB</div>
             </div>
-            <div class="warehouse-card__bottom-text">
+            <div id="fullCardGreyText" class="warehouse-card__bottom-text">
                 Вот тут нужен какой-то под текст Вот тут нужен какой-то 
                 под текст Вот тут нужен какой-то под текст Вот тут нужен 
                 какой-то под текст Вот тут нужен какой-то под текст Вот тут 
                 нужен какой-то под текстВот тут нужен какой-то под текст 
                 Вот тут нужен какой-то под текст Вот тут нужен какой-то под 
             </div>
-            <div class="warehouse-card__contacts">
+            <div id="fullCardContacts" class="warehouse-card__contacts">
                 <div class="warehouse-card__manager-info">
-                    <img src="./img/static/photo-profile.png" class="warehouse-card__manager-photo" />
+                    <img id="fullCardManagerPhoto" src="./img/static/photo-profile.png" class="warehouse-card__manager-photo" />
                     <div class="warehouse-card__manager-text-info">
-                        <div class="warehouse-card__manager-name">Зиновьев Олег Виктрович</div>
-                        <div class="warehouse-card__manager-position">менеджер по продажам</div>
+                        <div id="fullCardManagerName" class="warehouse-card__manager-name">Зиновьев Олег Виктрович</div>
+                        <div id="fullCardManagerPosition" class="warehouse-card__manager-position">менеджер по продажам</div>
                     </div>
                 </div>
                 <div class="warehouse-card__phone-and-email">
@@ -350,7 +350,7 @@
                 </div>
             </div>
             <div class="warehouse-card__photos-container">
-                <div class="warehouse-card__photos-wrapper">
+                <div id="fullCardPhotos" class="warehouse-card__photos-wrapper">
                     <img src="./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
                     <img src="./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
                     <img src="./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
@@ -358,7 +358,7 @@
                     <img src="./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
                 </div>
             </div>
-            <a href="https://wms-front.intelligent-system.ru/" target="_blank" class="warehouse-card__link-button">
+            <a id="fullCardBottomLink" href="https://wms-front.intelligent-system.ru/" target="_blank" class="warehouse-card__link-button">
                 https://wms-front.intelligent-system.ru/
             </a>
         </div>

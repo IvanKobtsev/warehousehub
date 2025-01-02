@@ -114,4 +114,12 @@ domElements.addWarehouseFormName.addEventListener('focus', cancelInvalidStatus);
 domElements.addWarehouseFormWarehouseName.addEventListener('focus', cancelInvalidStatus);
 domElements.addWarehouseFormWarehouseAddress.addEventListener('focus', cancelInvalidStatus);
 
+document.getElementById('fullCardCloseButton').addEventListener('click', () => {
+    domElements.warehouseDetailsModalDialog.classList.add('hidden');
+});
+
+domElements.warehouseDetailsModalDialog.addEventListener('click', e => {
+    if (e.target.id === domElements.warehouseDetailsModalDialog.id) domElements.warehouseDetailsModalDialog.classList.add('hidden');
+})
+
 export { updateNav }
