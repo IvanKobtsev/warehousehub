@@ -1,5 +1,5 @@
 #findWarehouseSection {
-    height: 785px;
+    height: fit-content;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
@@ -10,7 +10,6 @@
     }
 
     .section-container {
-        position: relative;
         width: 100%;
         min-height: 760px;
         overflow: hidden;
@@ -21,6 +20,7 @@
     }
 
     .switch-button {
+        position: absolute;
         z-index: 10;
         width: fit-content;
         display: flex;
@@ -69,7 +69,7 @@
     }
 
     #findWarehouseView {
-        position: absolute;
+        position: relative;
         left: -64px;
         width: 200vw;
         height: 100%;
@@ -82,15 +82,34 @@
 
         .view-half {
             border-radius: 32px;
-            height: 700px;
+            height: fit-content;
             width: 100vw;
             padding: 0 64px;
             box-sizing: border-box;
+            min-height: 760px;
         }
     }
 
     .warehouses-list {
         padding-top: 96px;
+        position: relative;
+
+        &.loading {
+            opacity: .5;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: calc(50% + 50px);
+                left: 50%;
+                translate: -50% -50%;
+                width: 50px;
+                height: 50px;
+                background-image: url('../img/svg/loading.svg');
+                background-size: cover;
+                animation: circleRotation 1s linear infinite;
+            }
+        }
 
         .warehouse-card {
             margin-bottom: 18px;
@@ -104,7 +123,7 @@
 }
 
 .filter-button {
-    position: relative;
+    position: absolute;
     z-index: 10;
     width: 64px;
     height: 64px;
@@ -113,7 +132,7 @@
     background-position: center center;
     background-color: var(--theme-color);
     border-radius: 18px;
-    margin-left: 18px;
+    margin-left: 385px;
     transition: .2s all;
     cursor: pointer;
 
@@ -125,8 +144,8 @@
 .filters-form {
     position: absolute;
     z-index: 15;
-    left: 385px;
-    top: 90px;
+    left: 450px;
+    top: 170px;
     width: 490px;
     height: fit-content;
     border-radius: 32px;

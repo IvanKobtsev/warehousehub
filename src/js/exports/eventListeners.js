@@ -8,6 +8,10 @@ function cancelInvalidStatus(event) {
     event.target.classList.remove(classNames.invalid);
 }
 
+function openFilterSelection(event) {
+    event.target.parentNode.parentNode.classList.toggle('active');
+}
+
 // NAVIGATION
 
 function selectNavElement(element) {
@@ -90,6 +94,10 @@ domElements.findWarehouseSwitchLeft.addEventListener('click', (e) => {
     e.target.parentNode.classList.add('switch-left');
     domElements.findWarehouseView.classList.remove('right-view');
     domElements.findWarehouseView.classList.add('left-view');
+
+    if (functions.warehousesFilters.currentPage === 1) {
+        functions.reloadWarehousesPage();
+    }
 });
 domElements.findWarehouseSwitchRight.addEventListener('click', (e) => {
     e.target.parentNode.classList.remove('switch-left');
@@ -105,6 +113,10 @@ domElements.findWarehouseFilterButton.addEventListener('click', () => {
 domElements.findWarehouseView.addEventListener('click', () => {
     domElements.findWarehouseFilterForm.classList.add('hidden');
 });
+
+// FILTERS
+document.getElementById('findWarehouseSectionPropertiesFilter').querySelector('.input-filters__add-filter').addEventListener('click', openFilterSelection);
+document.getElementById('findWarehouseSectionCitiesFilter').querySelector('.input-filters__add-filter').addEventListener('click', openFilterSelection);
 
 // FORM
 

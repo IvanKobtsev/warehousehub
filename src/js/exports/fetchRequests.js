@@ -28,4 +28,23 @@ async function getWarehouseData(id) {
     }
 }
 
-export { getMainData, sendAddWarehouseForm, getWarehouseData }
+async function getWarehousesPage(query) {
+    
+    const response = await fetch(query);
+
+    return await response.json();
+}
+
+async function getCitiesPropertyList() {
+    
+    const response = await fetch(links.api + 'city-property-list');
+
+    if (response.ok) {
+        return await response.json();
+    }
+    else {
+        alert("Что-то пошло не так!");
+    }
+}
+
+export { getMainData, sendAddWarehouseForm, getWarehouseData, getWarehousesPage, getCitiesPropertyList }

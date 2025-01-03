@@ -411,4 +411,66 @@
             }
         }
     }
+
+    .modal-dialog {
+        
+
+        .warehouse-card {
+            margin-top: 20px;
+            padding: 22px;
+            border-radius: 20px;
+
+            &__close-button {
+                top: 22px;
+                right: 22px;
+                width: 30px;
+                height: 30px;
+                background-size: 15px;
+            }
+
+            &__contacts {
+                margin-top: 10px;
+                flex-wrap: wrap;
+            }
+
+            &__manager-info {
+                margin-bottom: 20px;
+            }
+
+            &__phone {
+                margin-bottom: 10px;
+            }
+
+            &__phone-and-email {
+                margin-bottom: 10px;
+            }
+
+            &__photos-container {
+                margin-top: 10px;
+            }
+
+            &__tg-link {
+                margin-bottom: 10px;
+            }
+
+            &__link-button {
+                padding: 8px 16px 8px 32px;
+                border-radius: 10px;
+                font-size: 14px;
+                max-width: 100%;
+                margin-top: 20px;
+
+                &::before {
+                    width: 10px;
+                    height: 10px;
+                    background-size: cover;
+                    left: 12px;
+                }
+            }
+        }
+    }
+
+    .filter-button {
+        margin-left: 150px;
+    }
 }

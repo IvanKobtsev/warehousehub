@@ -64,100 +64,31 @@
             </div>
             <div id="findWarehouseFilterButton" class="filter-button"></div>
             <div id="findWarehouseFilterForm" class="filters-form hidden">
-                
-                <div class="select-wrapper">
-                    Город
-                    <select class="select">
-                        <option value="">Москва</option>
-                        <option value="">Санкт-Петербург</option>
-                        <option value="">Томск</option>
-                    </select>
-                </div>
-                <div class="range-wrapper">
-                    Площадь
-                    <div class="inline-input">
-                        от
-                        <div class="inline-range-wrapper"><input class="range range_square" type="text" id="rangeSquareMin" placeholder="300" /></div>
-                        до
-                        <div class="inline-range-wrapper"><input class="range range_square" type="text" id="rangeSquareMax" placeholder="99999999" /></div>
+                <div id="findWarehouseSectionCitiesFilter" class="input-wrapper">
+                    Адрес
+                    <div class="input-filters"><div class="input-filters__add-filter"></div><div class="no-filter">[без фильтра]</div></div>
+                    <div class="input-filters-selecter">
+                        <input class="input-filters__input" type="text" placeholder="Поиск..." />
+                        <div class="input-filters__selectable-filters"></div>
                     </div>
                 </div>
-                <div class="select-wrapper">
-                    Доставка
-                    <select class="select">
-                        <option value="">Курьером</option>
-                        <option value="">Силами продавца</option>
-                        <option value="">Силами боженьки</option>
-                        <option value="">Силами своими</option>
-                    </select>
-                </div>
-                <div class="select-wrapper">
-                    Тип склада
-                    <select class="select">
-                        <option value="">Обычный</option>
-                        <option value="">Необычный</option>
-                        <option value="">Эпический</option>
-                        <option value="">Легендарный</option>
-                        <option value="">Ахеренный</option>
-                    </select>
+                <div id="findWarehouseSectionPropertiesFilter" class="input-wrapper">
+                    Свойства
+                    <div class="input-filters"><div class="input-filters__add-filter"></div><div class="no-filter">[без фильтра]</div></div>
+                    <div class="input-filters-selecter">
+                        <input class="input-filters__input" type="text" placeholder="Поиск свойства..." />
+                        <div class="input-filters__selectable-filters"></div>
+                    </div>
                 </div>
             </div>
-
             <div id="findWarehouseView" class="right-view">
                 <div class="view-half">
-                    <div class="warehouses-list">
-                        <div class="warehouse-card">
-                            <div class="warehouse-card__header">
-                                <img class="warehouse-card__icon" src="img/dev-only/logo 2.png"></img>
-                                <div class="warehouse-card__header-text">
-                                    <div class="warehouse-card__name">ФулФилин</div>
-                                    <div class="warehouse-card__address">г. Электросталь, ул Рабочая, строение 1</div>
-                                </div>
-                            </div>
-                            <div class="warehouse-card__properties">
-                                <div class="warehouse-card__property">Обычный тип</div>
-                                <div class="warehouse-card__property">Доставка силами продавца</div>
-                                <div class="warehouse-card__property">Доставка курьером</div>
-                                <div class="warehouse-card__property">Доставка из склада WB</div>
-                            </div>
-                        </div>
-                        <div class="warehouse-card">
-                            <div class="warehouse-card__header">
-                                <img class="warehouse-card__icon" src="img/dev-only/logo 2.png"></img>
-                                <div class="warehouse-card__header-text">
-                                    <div class="warehouse-card__name">ФулФилин</div>
-                                    <div class="warehouse-card__address">г. Электросталь, ул Рабочая, строение 1</div>
-                                </div>
-                            </div>
-                            <div class="warehouse-card__properties">
-                                <div class="warehouse-card__property">Обычный тип</div>
-                                <div class="warehouse-card__property">Доставка силами продавца</div>
-                                <div class="warehouse-card__property">Доставка курьером</div>
-                                <div class="warehouse-card__property">Доставка из склада WB</div>
-                            </div>
-                        </div>
-                        <div class="warehouse-card">
-                            <div class="warehouse-card__header">
-                                <img class="warehouse-card__icon" src="img/dev-only/logo 2.png"></img>
-                                <div class="warehouse-card__header-text">
-                                    <div class="warehouse-card__name">ФулФилин</div>
-                                    <div class="warehouse-card__address">г. Электросталь, ул Рабочая, строение 1</div>
-                                </div>
-                            </div>
-                            <div class="warehouse-card__properties">
-                                <div class="warehouse-card__property">Обычный тип</div>
-                                <div class="warehouse-card__property">Доставка силами продавца</div>
-                                <div class="warehouse-card__property">Доставка курьером</div>
-                                <div class="warehouse-card__property">Доставка из склада WB</div>
-                            </div>
-                        </div>
+                    <div id="findWarehouseSectionPageList" class="warehouses-list">
+                        
                     </div>
-                    <div class="pagination-block">
+                    <div id="findWarehouseSectionPagination" class="pagination-block">
                         <div class="page selected" data-page="1">1</div>
-                        <div class="page" data-page="2">2</div>
-                        <div class="page" data-page="3">3</div>
-                        <div class="page" data-page="4">4</div>
-                        <div class="page" data-page="5">5</div>
+                        <div class="page" data-page="2">></div>
                     </div>
                 </div>
                 <div class="view-half">
@@ -171,72 +102,7 @@
         <h2 class="section__header"><span class="highlighted-text">Популярные склады</span></h2>
         <div class="popular-warehouses-carousel">
             <div id="popularWarehousesSectionCarousel" class="carousel-cards-wrapper">
-                <div class="warehouse-card">
-                    <div class="warehouse-card__header">
-                        <img class="warehouse-card__icon" src="img/dev-only/logo 2.png"></img>
-                        <div class="warehouse-card__header-text">
-                            <div class="warehouse-card__name">ФулФилин</div>
-                            <div class="warehouse-card__address">г. Электросталь, ул Рабочая, строение 1</div>
-                        </div>
-                    </div>
-                    <div class="warehouse-card__properties">
-                        <div class="warehouse-card__property">Обычный тип</div>
-                        <div class="warehouse-card__property">Доставка силами продовца</div>
-                        <div class="warehouse-card__property">Доставка курьером</div>
-                        <div class="warehouse-card__property">Доставка из склада WB</div>
-                    </div>
-                    <div class="warehouse-card__bottom-text">
-                        Вот тут нужен какой-то под текст Вот тут нужен какой-то 
-                        под текст Вот тут нужен какой-то под текст Вот тут нужен 
-                        какой-то под текст Вот тут нужен какой-то под текст Вот тут 
-                        нужен какой-то под текстВот тут нужен какой-то под текст 
-                        Вот тут нужен какой-то под текст Вот тут нужен какой-то под 
-                    </div>
-                </div>
-                <div class="warehouse-card">
-                    <div class="warehouse-card__header">
-                        <img class="warehouse-card__icon" src="img/dev-only/logo 2.png"></img>
-                        <div class="warehouse-card__header-text">
-                            <div class="warehouse-card__name">ФулФилин</div>
-                            <div class="warehouse-card__address">г. Электросталь, ул Рабочая, строение 1</div>
-                        </div>
-                    </div>
-                    <div class="warehouse-card__properties">
-                        <div class="warehouse-card__property">Обычный тип</div>
-                        <div class="warehouse-card__property">Доставка силами продовца</div>
-                        <div class="warehouse-card__property">Доставка курьером</div>
-                        <div class="warehouse-card__property">Доставка из склада WB</div>
-                    </div>
-                    <div class="warehouse-card__bottom-text">
-                        Вот тут нужен какой-то под текст Вот тут нужен какой-то 
-                        под текст Вот тут нужен какой-то под текст Вот тут нужен 
-                        какой-то под текст Вот тут нужен какой-то под текст Вот тут 
-                        нужен какой-то под текстВот тут нужен какой-то под текст 
-                        Вот тут нужен какой-то под текст Вот тут нужен какой-то под 
-                    </div>
-                </div>
-                <div class="warehouse-card">
-                    <div class="warehouse-card__header">
-                        <img class="warehouse-card__icon" src="img/dev-only/logo 2.png"></img>
-                        <div class="warehouse-card__header-text">
-                            <div class="warehouse-card__name">ФулФилин</div>
-                            <div class="warehouse-card__address">г. Электросталь, ул Рабочая, строение 1</div>
-                        </div>
-                    </div>
-                    <div class="warehouse-card__properties">
-                        <div class="warehouse-card__property">Обычный тип</div>
-                        <div class="warehouse-card__property">Доставка силами продовца</div>
-                        <div class="warehouse-card__property">Доставка курьером</div>
-                        <div class="warehouse-card__property">Доставка из склада WB</div>
-                    </div>
-                    <div class="warehouse-card__bottom-text">
-                        Вот тут нужен какой-то под текст Вот тут нужен какой-то 
-                        под текст Вот тут нужен какой-то под текст Вот тут нужен 
-                        какой-то под текст Вот тут нужен какой-то под текст Вот тут 
-                        нужен какой-то под текстВот тут нужен какой-то под текст 
-                        Вот тут нужен какой-то под текст Вот тут нужен какой-то под 
-                    </div>
-                </div>
+            
             </div>
         </div>
     </section>

@@ -38,25 +38,31 @@ const {YMapClusterer, clusterByGrid} = await ymaps3.import('@yandex/ymaps3-clust
 
 
 async function markerClick(e) {
-
     functions.openWarehouseDetails(e.target.warehouseId);
 }
 
 const marker = (feature) => {
 
-    let foundWarehouse;
+    // let foundWarehouse;
 
-    functions.warehousesList.forEach(warehouse => {
-        if (warehouse.id == feature.id) {
-            foundWarehouse = warehouse;
-        }
-    });
+    // functions.warehousesList.forEach(warehouse => {
+    //     if (warehouse.id == feature.id) {
+    //         foundWarehouse = warehouse;
+    //     }
+    // });
 
-    
+    console.log(feature);
     
     const markerImg = document.createElement('img');
-    markerImg.className = 'map-marker';
-    if (foundWarehouse.logo !== null) markerImg.src = api + foundWarehouse.logo.substring(1);
+    
+    if (feature.properties.is_big_map_photo) {
+        markerImg.className = 'map-marker';
+        if (feature.properties.logo !== null) markerImg.src = api + feature.properties.logo.substring(1);
+    }
+    else {
+        markerImg.className = 'map-point';
+    }
+
     markerImg.warehouseId = feature.id;
     markerImg.addEventListener('click', markerClick);
 
@@ -113,17 +119,38 @@ async function initMap() {
     
     functions.warehousesList.forEach(point => {
 
-        const newPoint = {
+        let isPopular = false;
+
+        for (const popularPoint of functions.popularWarehouses) {
+            if (popularPoint.id === point.id) {
+                isPopular = true;
+                break;
+            }
+        }
+
+        if (!isPopular) {
+            mapPoints.push({
+                type: 'Feature',
+                id: point.id,
+                geometry: {type: 'Point', coordinates: [point.coordinates.lon, point.coordinates.lat]},
+                properties: {
+                    logo: point.logo,
+                    is_big_map_photo: point.is_big_map_photo
+                }
+            });
+        }
+    });
+
+    functions.popularWarehouses.forEach(point => {
+        mapPoints.push({
             type: 'Feature',
             id: point.id,
             geometry: {type: 'Point', coordinates: [point.coordinates.lon, point.coordinates.lat]},
             properties: {
-                name: 'marker',
-                description: ''
+                logo: point.logo,
+                is_big_map_photo: true
             }
-        }
-
-        mapPoints.push(newPoint);
+        });
     });
 
     // console.log(mapPoints);

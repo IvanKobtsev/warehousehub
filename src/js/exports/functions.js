@@ -6,7 +6,17 @@ import * as yandexMap from "./yandexMap.js";
 import * as links from "./links.js";
 import { warehouseDetailsModalDialog } from "./dom.js";
 
-let warehousesList = [];
+let warehousesList = [],
+warehousesPagination;
+
+const warehousesFilters = {
+    limit: 4,
+    offset: 0,
+    currentPage: 1,
+    properties: [],
+    address: null,
+},
+popularWarehouses = [];
 
 function makeStruct(names) {
     var names = names.split(' ');
@@ -27,6 +37,150 @@ function isScrollInRange(element, scroll) {
 
 function isInRange(valueToCheck, min, max) {
     return valueToCheck >= min && valueToCheck < max;
+}
+
+function filterByInnerText(event) {
+
+    event.target.parentNode.querySelectorAll('.selectable-filter').forEach(selectable => {
+        if (selectable.innerText.toLowerCase().includes(event.target.value.toLowerCase())) {
+            selectable.classList.remove('hidden');
+        }
+        else {
+            selectable.classList.add('hidden');
+        }
+    });
+
+}
+
+async function reloadWarehousesPage() {
+
+    warehousesFilters.currentPage = 1;
+    warehousesFilters.offset = null;
+    warehousesFilters.limit = null;
+    warehousesFilters.properties = [];
+    warehousesFilters.address = null;
+
+    const cityFilter = document.getElementById('findWarehouseSectionCitiesFilter').querySelector('.filter');
+    if (cityFilter !== null) warehousesFilters.address = cityFilter.innerText;
+
+    const propsFilters = document.getElementById('findWarehouseSectionPropertiesFilter').querySelectorAll('.filter');
+    if (propsFilters !== null && propsFilters.length > 0) {
+        propsFilters.forEach(filter => {
+            warehousesFilters.properties.push(filter.innerText);
+        });
+    }
+
+    let query = links.api + 'warehouses';
+
+    if (warehousesFilters.offset !== null) query += '&offset=' + warehousesFilters.offset;
+
+    if (warehousesFilters.limit !== null) query += '&limit=' + warehousesFilters.limit;
+
+    if (warehousesFilters.address !== null) query += '&address=' + warehousesFilters.address;
+
+    if (warehousesFilters.properties.length > 0) {
+        let propsQuery = '';
+
+        warehousesFilters.properties.forEach(prop => {
+            propsQuery += prop + ',';
+        });
+
+        query += '&properties=' + propsQuery.substring(0, propsQuery.length - 1);
+    }
+    
+    await loadWarehousesPage(query);
+}
+
+function selectFilter(event) {
+    
+    if (event.target.classList.contains('active')) {
+        event.target.classList.remove('active');
+
+        event.target.parentNode.parentNode.parentNode.querySelector('.input-filters').querySelectorAll('.filter').forEach(filter => {
+            if (filter.innerText === event.target.innerText) {
+                filter.remove();
+            }
+        });
+
+        if (event.target.parentNode.parentNode.parentNode.querySelector('.input-filters').querySelectorAll('.filter').length === 0) {
+            const noFilter = document.createElement('div');
+            noFilter.className = 'no-filter';
+            noFilter.innerText = '[без фильтра]';
+            event.target.parentNode.parentNode.parentNode.querySelector('.input-filters').appendChild(noFilter);
+        }
+    }
+    else {
+        event.target.classList.add('active');
+
+        const selectedFilter = event.target.parentNode.parentNode.parentNode.querySelector('.input-filters').querySelector('.filter');
+        if (selectedFilter !== null) selectedFilter.click();
+
+        const noFilter = event.target.parentNode.parentNode.parentNode.querySelector('.no-filter');
+        if (noFilter !== null) noFilter.remove();
+
+        const newFilter = document.createElement('div');
+        newFilter.className = 'filter';
+        newFilter.innerText = event.target.innerText;
+        newFilter.addEventListener('click', removeFilter);
+
+        event.target.parentNode.parentNode.parentNode.querySelector('.input-filters').appendChild(newFilter);
+    }
+
+    reloadWarehousesPage();
+}
+
+function removeFilter(event) {
+
+    event.target.parentNode.parentNode.lastChild.querySelectorAll('.selectable-filter.active').forEach(selectable => {
+        if (selectable.innerText === event.target.innerText) {
+            selectable.classList.remove('active');
+        }
+    });
+
+    if (event.target.parentNode.parentNode.querySelector('.input-filters').querySelectorAll('.filter').length === 1) {
+        const noFilter = document.createElement('div');
+        noFilter.className = 'no-filter';
+        noFilter.innerText = '[без фильтра]';
+        event.target.parentNode.parentNode.querySelector('.input-filters').appendChild(noFilter);
+    }
+
+    event.target.remove();
+    reloadWarehousesPage();
+}
+
+function toggleFilter(event) {
+
+    if (event.target.classList.contains('active')) {
+        event.target.classList.remove('active');
+
+        event.target.parentNode.parentNode.parentNode.querySelector('.input-filters').querySelectorAll('.filter').forEach(filter => {
+            if (filter.innerText === event.target.innerText) {
+                filter.remove();
+            }
+        });
+
+        if (event.target.parentNode.parentNode.parentNode.querySelector('.input-filters').querySelectorAll('.filter').length === 0) {
+            const noFilter = document.createElement('div');
+            noFilter.className = 'no-filter';
+            noFilter.innerText = '[без фильтра]';
+            event.target.parentNode.parentNode.parentNode.querySelector('.input-filters').appendChild(noFilter);
+        }
+    }
+    else {
+        event.target.classList.add('active');
+
+        const noFilter = event.target.parentNode.parentNode.parentNode.querySelector('.no-filter');
+        if (noFilter !== null) noFilter.remove();
+
+        const newFilter = document.createElement('div');
+        newFilter.className = 'filter';
+        newFilter.innerText = event.target.innerText;
+        newFilter.addEventListener('click', removeFilter);
+
+        event.target.parentNode.parentNode.parentNode.querySelector('.input-filters').appendChild(newFilter);
+    }
+
+    reloadWarehousesPage();
 }
 
 // Validators
@@ -85,11 +239,6 @@ async function loadMainData() {
             cardsContainer.appendChild(newCard);
         });
 
-        // FIND WAREHOUSES
-        warehousesList = result.warehouses_coordinates;
-
-        yandexMap.initMap();
-
         // POPULAR WAREHOUSES
         const parser = new DOMParser(),
         newCardTemplate = parser.parseFromString(htmlElements.warehouseCard, 'text/html').querySelector(".warehouse-card"),
@@ -98,6 +247,14 @@ async function loadMainData() {
         cardsCarousel.replaceChildren();
 
         result.populate_warehouses.forEach(cardData => {
+
+            popularWarehouses.push({
+                id: cardData.id,
+                coordinates: cardData.coordinates,
+                logo: cardData.logo,
+                is_big_map_photo: true
+            });
+
             const newCard = newCardTemplate.cloneNode(true);
 
             if (cardData.logo === null) {
@@ -144,6 +301,46 @@ async function loadMainData() {
 
         document.getElementById('contactsSectionTelegramText').innerText = result.contacts.telegram;
         document.getElementById('contactsSectionTelegramLink').href = "https://t.me/" + result.contacts.telegram.substring(1);
+    
+        // FILTERS 
+        const cityPropertyList = await fetchRequests.getCitiesPropertyList();
+
+        const selectablePropertyFilters = document.getElementById('findWarehouseSectionPropertiesFilter').querySelector('.input-filters__selectable-filters');
+        document.getElementById('findWarehouseSectionPropertiesFilter').querySelector('.input-filters__input').addEventListener('input', filterByInnerText);
+        document.getElementById('findWarehouseSectionPropertiesFilter').querySelector('.input-filters__input').value = '';
+        console.log(cityPropertyList);
+
+        cityPropertyList.properties.forEach(property => {
+            const newProperty = document.createElement('div');
+            newProperty.className = 'selectable-filter';
+            newProperty.innerText = property;
+            newProperty.addEventListener('click', toggleFilter);
+            selectablePropertyFilters.appendChild(newProperty);
+        });
+
+        const selectableCitiesFilters = document.getElementById('findWarehouseSectionCitiesFilter').querySelector('.input-filters__selectable-filters');
+        document.getElementById('findWarehouseSectionCitiesFilter').querySelector('.input-filters__input').addEventListener('input', filterByInnerText);
+        document.getElementById('findWarehouseSectionCitiesFilter').querySelector('.input-filters__input').value = '';
+
+        cityPropertyList.cities.forEach(property => {
+            const newProperty = document.createElement('div');
+            newProperty.className = 'selectable-filter';
+            newProperty.innerText = property;
+            newProperty.addEventListener('click', selectFilter);
+            selectableCitiesFilters.appendChild(newProperty);
+        });
+
+        await reloadWarehousesPage();
+        const maoHeight = document.getElementById('findWarehouseView').getBoundingClientRect().height;
+
+        document.getElementById('yandexMap').style.height = maoHeight + 'px';
+        
+        // FIND WAREHOUSES
+        warehousesList = result.warehouses_coordinates;
+
+        yandexMap.initMap();
+
+        
     }
     else {
         alert("Что-то пошло не так... Пробуем ещё раз.");
@@ -232,18 +429,20 @@ async function openWarehouseDetails(warehouseId) {
         newSocialLinksDiv.className = 'warehouse-card__social-links';
         
         if (warehouseData.manager.telegram !== null) {
-            const newTelegramDiv = document.createElement('div');
+            const newTelegramDiv = document.createElement('a');
             newTelegramDiv.className = 'warehouse-card__tg-link';
             newTelegramDiv.innerText = warehouseData.manager.telegram;
-            newTelegramDiv.href = warehouseData.manager.telegram;
+            newTelegramDiv.setAttribute('href', warehouseData.manager.telegram);
+            newTelegramDiv.setAttribute('target', '_blank');
             newSocialLinksDiv.appendChild(newTelegramDiv);
         }
 
         if (warehouseData.manager.whatsapp !== null) {
-            const newWhatsappDiv = document.createElement('div');
+            const newWhatsappDiv = document.createElement('a');
             newWhatsappDiv.className = 'warehouse-card__wa-link';
             newWhatsappDiv.innerText = warehouseData.manager.whatsapp;
-            newWhatsappDiv.href = warehouseData.manager.whatsapp;
+            newWhatsappDiv.setAttribute('href', 'https://wa.me/' + warehouseData.manager.whatsapp.substring(1));
+            newWhatsappDiv.setAttribute('target', '_blank');
             newSocialLinksDiv.appendChild(newWhatsappDiv);
         }
 
@@ -301,4 +500,104 @@ async function clickOnCopy(e) {
     });
 }
 
-export { makeStruct, isScrollInRange, isInRange, validateEmail, validatePhoneNumber, validateFill, loadMainData, openWarehouseDetails, warehousesList };
+async function loadWarehousesPage(query = null) {
+
+    if (query === null) query = links.api + 'warehouses';
+
+    document.getElementById('findWarehouseSectionPageList').classList.add('loading');    
+
+    console.log(query.substring(28));
+    window.history.replaceState({}, '', '/' + query.substring(28));
+
+    warehousesPagination = await fetchRequests.getWarehousesPage(query);
+
+    document.getElementById('findWarehouseSectionPageList').classList.remove('loading');
+    console.log(warehousesPagination);
+
+    // LIST
+    const parser = new DOMParser(),
+    newCardTemplate = parser.parseFromString(htmlElements.warehouseCard, 'text/html').querySelector(".warehouse-card"),
+    findWarehouseSectionPageList = document.getElementById('findWarehouseSectionPageList');
+
+    newCardTemplate.querySelector('.warehouse-card__bottom-text').remove();
+    
+    findWarehouseSectionPageList.replaceChildren();
+
+    warehousesPagination.results.forEach(cardData => {
+        const newCard = newCardTemplate.cloneNode(true);
+
+        if (cardData.logo === null) {
+            newCard.querySelector('.warehouse-card__icon').remove();
+        }
+        else {
+            newCard.querySelector('.warehouse-card__icon').src = links.api + cardData.logo.substring(1);
+        }
+
+        newCard.querySelector('.warehouse-card__name').innerText = cardData.title;
+        newCard.querySelector('.warehouse-card__address').innerText = cardData.address;
+        
+        const squareProperty = document.createElement('div');
+        squareProperty.className = 'warehouse-card__property';
+        squareProperty.innerText = cardData.square + ' м²';
+        
+        const newCardProperties = newCard.querySelector('.warehouse-card__properties');
+        newCardProperties.replaceChildren();
+        newCardProperties.appendChild(squareProperty);
+
+        cardData.properties.forEach(property => {
+            const newProperty = document.createElement('div');
+            newProperty.className = 'warehouse-card__property';
+            newProperty.innerText = property;
+            newCardProperties.appendChild(newProperty);
+        });
+
+        newCard.addEventListener('click', clickOnCard);
+
+        newCard.warehouseId = cardData.id;
+
+        findWarehouseSectionPageList.appendChild(newCard);
+    });
+    
+    // PAGINATION
+    const paginationBlock = document.getElementById('findWarehouseSectionPagination');
+    paginationBlock.replaceChildren();
+
+    if (warehousesPagination.previous !== null) {
+        const newPageLink = document.createElement('div');
+        newPageLink.className = 'page';
+        newPageLink.innerText = '<';
+        newPageLink.addEventListener('click', () => {
+            warehousesFilters.currentPage--;
+            loadWarehousesPage(warehousesPagination.previous.replace('http', 'https'));
+        });
+        paginationBlock.appendChild(newPageLink);
+    }
+
+    const newPageLink = document.createElement('div');
+    newPageLink.className = 'page selected';
+    newPageLink.innerText = warehousesFilters.currentPage;
+    paginationBlock.appendChild(newPageLink);
+
+    if (warehousesPagination.next !== null) {
+        const newPageLink = document.createElement('div');
+        newPageLink.className = 'page';
+        newPageLink.innerText = '>';
+        newPageLink.addEventListener('click', () => {
+            warehousesFilters.currentPage++;
+            loadWarehousesPage(warehousesPagination.next.replace('http', 'https'));
+        });
+        paginationBlock.appendChild(newPageLink);
+    }
+
+    // warehousesPagination.results.forEach(warehouse => {
+    //     warehousesList.push({
+    //         id: warehouse.id,
+    //         coordinates: [warehouse.coordinates.lon, warehouse.coordinates.lat],
+    //         is_big_map_photo: warehouse.
+    //     });
+    // });
+
+    // yandexMap.initMap();
+}
+
+export { makeStruct, isScrollInRange, isInRange, validateEmail, validatePhoneNumber, validateFill, loadMainData, openWarehouseDetails, warehousesList, warehousesFilters, popularWarehouses, reloadWarehousesPage, loadWarehousesPage };
