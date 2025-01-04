@@ -52,10 +52,10 @@ function filterByInnerText(event) {
 
 }
 
-async function reloadWarehousesPage() {
+async function reloadWarehousesPage(displayInUrl = true) {
 
     warehousesFilters.currentPage = 1;
-    warehousesFilters.offset = 0;
+    warehousesFilters.offset = null;
     warehousesFilters.limit = null;
     warehousesFilters.properties = [];
     warehousesFilters.address = null;
@@ -72,7 +72,7 @@ async function reloadWarehousesPage() {
 
     let query = links.api + 'warehouses';
 
-    if (warehousesFilters.limit !== null || warehousesFilters.offset !== null) query += '/?';
+    if (warehousesFilters.address !== null || warehousesFilters.properties.length > 0) query += '/?'
 
     if (warehousesFilters.offset !== null) query += '&offset=' + warehousesFilters.offset;
 
@@ -90,7 +90,7 @@ async function reloadWarehousesPage() {
         query += '&properties=' + propsQuery.substring(0, propsQuery.length - 1);
     }
     
-    await loadWarehousesPage(query);
+    await loadWarehousesPage(query, displayInUrl);
 }
 
 function selectFilter(event) {
@@ -224,8 +224,6 @@ async function loadMainData() {
 
     if (response.ok) {
         const result = await response.json();
-        
-        console.log(result);
 
         // MAIN 
         document.getElementById('mainSectionHeader').innerHTML = result.main.title.replace('<L>', `<span class="${classNames.highlighted}">`).replace('</L>', '</span>');
@@ -310,7 +308,6 @@ async function loadMainData() {
         const selectablePropertyFilters = document.getElementById('findWarehouseSectionPropertiesFilter').querySelector('.input-filters__selectable-filters');
         document.getElementById('findWarehouseSectionPropertiesFilter').querySelector('.input-filters__input').addEventListener('input', filterByInnerText);
         document.getElementById('findWarehouseSectionPropertiesFilter').querySelector('.input-filters__input').value = '';
-        console.log(cityPropertyList);
 
         cityPropertyList.properties.forEach(property => {
             const newProperty = document.createElement('div');
@@ -332,10 +329,10 @@ async function loadMainData() {
             selectableCitiesFilters.appendChild(newProperty);
         });
 
-        await reloadWarehousesPage();
-        const maoHeight = document.getElementById('findWarehouseView').getBoundingClientRect().height;
+        await reloadWarehousesPage(false);
+        const mapHeight = document.getElementById('findWarehouseView').getBoundingClientRect().height;
 
-        document.getElementById('yandexMap').style.height = maoHeight + 'px';
+        document.getElementById('yandexMap').style.height = mapHeight + 'px';
         
         // FIND WAREHOUSES
         warehousesList = result.warehouses_coordinates;
@@ -353,8 +350,6 @@ async function loadMainData() {
 async function openWarehouseDetails(warehouseId) {
     
     const warehouseData = await fetchRequests.getWarehouseData(warehouseId);
-
-    console.log(warehouseData);
 
     warehouseDetailsModalDialog.classList.remove('hidden');
 
@@ -497,24 +492,21 @@ async function clickOnCopy(e) {
     .then(_ => {
         // Display a popup
     })
-    .catch(error => {
-        console.log('Meh');
-    });
 }
 
-async function loadWarehousesPage(query = null) {
+async function loadWarehousesPage(query = null, displayInUrl = true) {
 
     if (query === null) query = links.api + 'warehouses';
 
     document.getElementById('findWarehouseSectionPageList').classList.add('loading');    
 
-    console.log(query.substring(28));
-    window.history.replaceState({}, '', '/' + query.substring(28));
-
+    if (displayInUrl) {
+        window.history.replaceState({}, '', '/' + query.substring(28));
+    }
+    
     warehousesPagination = await fetchRequests.getWarehousesPage(query);
 
     document.getElementById('findWarehouseSectionPageList').classList.remove('loading');
-    console.log(warehousesPagination);
 
     // LIST
     const parser = new DOMParser(),

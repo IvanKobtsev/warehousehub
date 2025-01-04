@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
     <!-- FAVICON -->
-    <link rel="icon" type="image/png" href="favicon/favicon-48x48.png" sizes="48x48" />
-    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
-    <link rel="shortcut icon" href="favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-48x48.png" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="VirtualBlog" />
-    <link rel="manifest" href="favicon/site.webmanifest" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
     <!-- FONTS -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>WarehouseHub</title>
@@ -19,7 +19,7 @@
 <body>
     <header class="header">
         <div class="header__nav-wrapper">
-            <a href="http://localhost:8000/"><img src="img/static/wh-logo.png" class="wh-logo"></img></a>
+            <a href="/"><img src="/img/static/wh-logo.png" class="wh-logo"></img></a>
             <div id="mainSectionNav" data-scroll-to-id="mainSection" class="nav-element selected">Главная</div>
             <div id="warehousesSectionNav" data-scroll-to-id="findWarehouseSection" class="nav-element">Склады</div>
             <div id="aboutUsSectionNav" data-scroll-to-id="aboutUsSection" class="nav-element">О нас</div>
@@ -49,7 +49,7 @@
             </div>
         </div>
     
-        <img src="img/static/main-section-image.png" id="mainSectionBG" class="section-bg-image"></img>
+        <img src="/img/static/main-section-image.png" id="mainSectionBG" class="section-bg-image"></img>
     </section>
 
     <section id="findWarehouseSection" class="section">
@@ -125,14 +125,14 @@
                     <div class="about-us-grid__tile-text-container">
                         <div class="about-us-grid__mobile-tile-header">
                             <div class="mobile-header">Warehouse<br>Hub</div>
-                            <img src="img/static/about-us-wh-logo.png" class="mobile-header-icon" />        
+                            <img src="/img/static/about-us-wh-logo.png" class="mobile-header-icon" />        
                         </div>
                         <div class="about-us-grid__tile-header">WarehouseHub</div>
                         <div id="aboutUsSectionDescription" class="about-us-grid__tile-text">Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст 
                             Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под текстВот тут нужен какой-то под текст 
                         </div>
                     </div>
-                    <img src="img/static/about-us-wh-logo.png" class="about-us-grid__icon" />
+                    <img src="/img/static/about-us-wh-logo.png" class="about-us-grid__icon" />
                 </div>
                 <div id="workersImageGridTile" class="about-us-grid__tile"></div>
             </div>
@@ -153,7 +153,7 @@
                 <a id="contactsSectionTelegramLink" href="https://t.me/warehouse_hub_tg" target="_blank" draggable="false" class="contact__button">Написать нам</a>
             </div>
         </div>
-        <img src="img/static/contacts-section-image.png" class="section-bg-image" />
+        <img src="/img/static/contacts-section-image.png" class="section-bg-image" />
     </section>
 
     <section id="addWarehouseSection" class="section">
@@ -171,7 +171,7 @@
                 <textarea id="addWarehouseFormComment" type="text" class="multiline-input" placeholder="Комментарий (необязательно)"></textarea>
                 <input id="addWarehouseFormSubmit" type="submit" class="submit-button" value="Отправить" />
             </form>
-            <img src="img/static/add-warehouse-section-image.png" class="section-bg-image" />
+            <img src="/img/static/add-warehouse-section-image.png" class="section-bg-image" />
         </div>
     </section>
 
@@ -179,7 +179,7 @@
         <div class="warehouse-card">
             <div id="fullCardCloseButton" class="warehouse-card__close-button"></div>
             <div class="warehouse-card__header">
-                <img id="fullCardIcon" class="warehouse-card__icon" src="img/dev-only/logo 2.png"></img>
+                <img id="fullCardIcon" class="warehouse-card__icon" src="/img/dev-only/logo 2.png"></img>
                 <div class="warehouse-card__header-text">
                     <div id="fullCardName" class="warehouse-card__name">ФулФилин</div>
                     <div id="fullCardAddress" class="warehouse-card__address">г. Электросталь, ул Рабочая, строение 1</div>
@@ -200,7 +200,7 @@
             </div>
             <div id="fullCardContacts" class="warehouse-card__contacts">
                 <div class="warehouse-card__manager-info">
-                    <img id="fullCardManagerPhoto" src="./img/static/photo-profile.png" class="warehouse-card__manager-photo" />
+                    <img id="fullCardManagerPhoto" src="/./img/static/photo-profile.png" class="warehouse-card__manager-photo" />
                     <div class="warehouse-card__manager-text-info">
                         <div id="fullCardManagerName" class="warehouse-card__manager-name">Зиновьев Олег Виктрович</div>
                         <div id="fullCardManagerPosition" class="warehouse-card__manager-position">менеджер по продажам</div>
@@ -217,11 +217,11 @@
             </div>
             <div class="warehouse-card__photos-container">
                 <div id="fullCardPhotos" class="warehouse-card__photos-wrapper">
-                    <img src="./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
-                    <img src="./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
-                    <img src="./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
-                    <img src="./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
-                    <img src="./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
+                    <img src="/./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
+                    <img src="/./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
+                    <img src="/./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
+                    <img src="/./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
+                    <img src="/./img/dev-only/photo-example.jpg" class="warehouse-card__photo" />
                 </div>
             </div>
             <a id="fullCardBottomLink" href="https://wms-front.intelligent-system.ru/" target="_blank" class="warehouse-card__link-button">
@@ -234,6 +234,6 @@
     <!-- YANDEX MAPS -->
     <script src="https://api-maps.yandex.ru/v3/?apikey=8768d26d-7d21-403e-949d-2fac0add9ac2&lang=ru_RU"></script>
     <!-- INDEX.JS -->
-    <script type="module" src="js/index.js"></script>
+    <script type="module" src="/js/index.js"></script>
 </body>
 </html>

@@ -29,7 +29,13 @@ const location = {
     zoom: 13 // starting zoom
 };
 
-await ymaps3.ready;
+try {
+    await ymaps3.ready;
+}
+catch {
+    alert("Яндекс.карты не загрузились!");
+}
+
 const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapLayer, YMapFeatureDataSource, YMapMarker} = ymaps3;
 ymaps3.import.registerCdn('https://cdn.jsdelivr.net/npm/{package}', [
     '@yandex/ymaps3-clusterer@0.0.10'
