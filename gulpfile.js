@@ -93,4 +93,14 @@ gulp.task('fonts', () => {
         .pipe(gulp.dest('dist/fonts'));
 });
 
-gulp.task('default', gulp.parallel('watch', 'styles', 'compress-js', 'compress-img', 'compress-pages', 'favicon', 'fonts', 'server'));
+gulp.task('dockerfile', () => {
+    return gulp.src('src/Dockerfile')
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('nginx', () => {
+    return gulp.src('src/nginx.conf')
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('default', gulp.parallel('watch', 'styles', 'compress-js', 'compress-img', 'compress-pages', 'favicon', 'fonts', 'dockerfile', 'nginx', 'server'));
