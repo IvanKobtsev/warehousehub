@@ -55,7 +55,7 @@ function filterByInnerText(event) {
 async function reloadWarehousesPage() {
 
     warehousesFilters.currentPage = 1;
-    warehousesFilters.offset = null;
+    warehousesFilters.offset = 0;
     warehousesFilters.limit = null;
     warehousesFilters.properties = [];
     warehousesFilters.address = null;
@@ -71,6 +71,8 @@ async function reloadWarehousesPage() {
     }
 
     let query = links.api + 'warehouses';
+
+    if (warehousesFilters.limit !== null || warehousesFilters.offset !== null) query += '/?';
 
     if (warehousesFilters.offset !== null) query += '&offset=' + warehousesFilters.offset;
 

@@ -54,7 +54,7 @@
                 position: absolute;
                 width: 187px;
                 height: 171px;
-                background: url('../../img/svg/about-us-briefcase.svg');
+                background: url('../img/svg/about-us-briefcase.svg');
                 right: 0;
                 top: 0;
                 background-repeat: no-repeat;
@@ -63,7 +63,7 @@
 
         #warehouseImageGridTile {
             width: 19%;
-            background: url('../../img/static/about-us-warehouse.png');
+            background: url('../img/static/about-us-warehouse.png');
             background-position: center center;
             background-size: cover;
         }
@@ -83,7 +83,7 @@
                 position: absolute;
                 width: 265px;
                 height: 279px;
-                background: url('../../img/static/russia-silhouette.png');
+                background: url('../img/static/russia-silhouette.png');
                 right: 0;
                 top: 5px;
                 background-repeat: no-repeat;
@@ -137,7 +137,7 @@
         content: "";
         position: absolute;
         z-index: -1;
-        background: url('../../img/svg/blot-about-us.svg');
+        background: url('../img/svg/blot-about-us.svg');
         left: 0;
         top: 20px;
         width: 762px;
