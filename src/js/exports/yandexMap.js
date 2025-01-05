@@ -18,22 +18,24 @@ function getBounds(coordinates) {
         if (lng > maxLng) maxLng = lng;
     }
 
+    const delta = Math.max((maxLng - minLng) / 10, (maxLat - minLat) / 10);
+
     return [
-        [minLng, minLat],
-        [maxLng, maxLat]
+        [minLng - delta, minLat - delta],
+        [maxLng + delta, maxLat + delta]
     ];
 }
 
 const location = {
-    center: [37.588144, 55.733842], // starting position [lng, lat]
-    zoom: 13 // starting zoom
+    center: [37.588144, 55.733842],
+    zoom: 13
 };
 
 try {
     await ymaps3.ready;
 }
 catch {
-    alert("Яндекс.карты не загрузились!");
+    showErrorDialog();
 }
 
 const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapLayer, YMapFeatureDataSource, YMapMarker} = ymaps3;
@@ -48,14 +50,6 @@ async function markerClick(e) {
 }
 
 const marker = (feature) => {
-
-    // let foundWarehouse;
-
-    // functions.warehousesList.forEach(warehouse => {
-    //     if (warehouse.id == feature.id) {
-    //         foundWarehouse = warehouse;
-    //     }
-    // });
     
     const markerImg = document.createElement('img');
     
@@ -160,27 +154,6 @@ async function initMap() {
             }
         });
     });
-    
-    // const points2 = [{
-    //     type: 'Feature',
-    //     id: 1,
-    //     geometry: {type: 'Point', coordinates: [37.588144, 55.733842]},
-    //     properties: {
-    //         name: 'marker',
-    //         description: ''
-    //     }
-    // },
-    // {
-    //     type: 'Feature',
-    //     id: 2,
-    //     geometry: {type: 'Point', coordinates: [37.588344, 55.733142]},
-    //     properties: {
-    //         name: 'marker',
-    //         description: ''
-    //     }
-    // }];
-
-    // mapPoints = points2;
 
     const clusterer = new YMapClusterer({
         method: clusterByGrid({gridSize: 64}),

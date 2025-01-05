@@ -12,6 +12,10 @@ function openFilterSelection(event) {
     event.target.parentNode.parentNode.classList.toggle('active');
 }
 
+function closeModalDialog(event) {
+    event.target.parentNode.parentNode.classList.add('hidden');
+}
+
 // NAVIGATION
 
 function selectNavElement(element) {
@@ -69,13 +73,13 @@ async function sendForm(event) {
         });
 
         if (response.ok) {
-            alert('Спасибо!');
+            showSentFormDialog();
             domElements.addWarehouseFormName.value = domElements.addWarehouseFormEmail.value = domElements.addWarehouseFormWarehouseName.value = 
             domElements.addWarehouseFormWarehouseAddress.value = domElements.addWarehouseFormComment.value = "";
-            window.location.reload();
+            // window.location.reload();
         }
         else {
-            alert('Что-то пошло не так.');
+            showErrorDialog();
         }
     }
 }
@@ -135,4 +139,17 @@ domElements.warehouseDetailsModalDialog.addEventListener('click', e => {
     if (e.target.id === domElements.warehouseDetailsModalDialog.id) domElements.warehouseDetailsModalDialog.classList.add('hidden');
 })
 
-export { updateNav, cancelInvalidStatus }
+// MODAL DIALOGS
+
+document.getElementById('sentFormDialog').addEventListener('click', closeModalDialog);
+document.getElementById('errorDialog').addEventListener('click', closeModalDialog);
+
+function showSentFormDialog() {
+    document.getElementById('sentFormDialog').classList.remove('hidden');
+}
+
+function showErrorDialog() {
+    document.getElementById('errorDialog').classList.remove('hidden');
+}
+
+export { updateNav, cancelInvalidStatus, showErrorDialog, showSentFormDialog }

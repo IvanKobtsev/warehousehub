@@ -5,7 +5,7 @@ import * as htmlElements from "./htmlElements.js";
 import * as yandexMap from "./yandexMap.js";
 import * as links from "./links.js";
 import { warehouseDetailsModalDialog } from "./dom.js";
-import { cancelInvalidStatus } from "./eventListeners.js";
+import { cancelInvalidStatus, showErrorDialog } from "./eventListeners.js";
 
 let warehousesList = [],
 warehousesPagination;
@@ -467,7 +467,7 @@ async function loadMainData() {
         yandexMap.initMap();
     }
     else {
-        alert("Что-то пошло не так... Пробуем ещё раз.");
+        showErrorDialog();
         window.location.reload();
     }
 }

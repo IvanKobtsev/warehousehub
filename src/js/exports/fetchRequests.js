@@ -1,3 +1,4 @@
+import { showErrorDialog } from "./eventListeners.js";
 import * as links from "./links.js";
 import * as regexes from "./regexes.js";
 
@@ -25,7 +26,7 @@ async function getWarehouseData(id) {
         return await response.json();
     }
     else {
-        alert("Что-то пошло не так!");
+        showErrorDialog();
     }
 }
 
@@ -63,7 +64,7 @@ async function getCitiesPropertyList() {
         return await response.json();
     }
     else {
-        alert("Что-то пошло не так!");
+        showErrorDialog();
     }
 }
 

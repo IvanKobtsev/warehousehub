@@ -217,4 +217,56 @@
         }
     }
 
+    .modal-message {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        translate: -50% -50%;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        padding: 22px;
+        padding-bottom: 28px;
+        background-color: white;
+        min-width: 460px;
+        box-sizing: border-box;
+        width: fit-content;
+        height: fit-content;
+        border-radius: 32px;
+
+        &__title {
+            text-align: center;
+            font-size: 52px;
+            font-weight: 600;
+            color: var(--theme-color);
+
+            &.error {
+                color: red;
+            }
+        }
+
+        &__text {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 28px;
+            color: var(--main-text-color);
+        }
+
+        &__dismiss-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            height: 50px;
+            background-color: var(--theme-color);
+            color: white;
+            font-size: 32px;
+            font-weight: 900;
+            border-radius: 18px;
+            margin-top: 24px;
+            cursor: pointer;
+        }
+    }
 }
