@@ -2,7 +2,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    height: 564px;
+    min-height: 420px;
 
     .popular-warehouses-carousel {
 
@@ -10,6 +10,12 @@
         position: relative;
         width: 100vw;
         translate: -64px 0;
+
+        .warehouse-card {
+            &__bottom-text {
+                height: 80px;
+            }
+        }
 
         .carousel-cards-wrapper {
             
@@ -23,15 +29,15 @@
 
         }
 
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 64px;
-            height: 100%;
-            background: linear-gradient(to right, var(--bg-color) 20%, var(--bg-color-transparent) 100%);
-        }
+        // &::before {
+        //     content: '';
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     width: 64px;
+        //     height: 100%;
+        //     background: linear-gradient(to right, var(--bg-color) 20%, var(--bg-color-transparent) 100%);
+        // }
 
         // &::after {
         //     content: '';
@@ -142,6 +148,11 @@
         margin-top: 6px;
         font-size: 16px;
         color: var(--light-grey);
+        
+
+        &.shorted::after {
+            content: '...';
+        }
     }
 
     &:last-child {

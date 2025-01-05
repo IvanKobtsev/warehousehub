@@ -117,6 +117,7 @@ domElements.findWarehouseView.addEventListener('click', () => {
 // FILTERS
 document.getElementById('findWarehouseSectionPropertiesFilter').querySelector('.input-filters__add-filter').addEventListener('click', openFilterSelection);
 document.getElementById('findWarehouseSectionCitiesFilter').querySelector('.input-filters__add-filter').addEventListener('click', openFilterSelection);
+document.getElementById('findWarehouseSectionClassFilter').querySelector('.input-filters__add-filter').addEventListener('click', openFilterSelection);
 
 // FORM
 
@@ -134,4 +135,4 @@ domElements.warehouseDetailsModalDialog.addEventListener('click', e => {
     if (e.target.id === domElements.warehouseDetailsModalDialog.id) domElements.warehouseDetailsModalDialog.classList.add('hidden');
 })
 
-export { updateNav }
+export { updateNav, cancelInvalidStatus }

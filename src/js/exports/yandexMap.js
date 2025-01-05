@@ -56,8 +56,6 @@ const marker = (feature) => {
     //         foundWarehouse = warehouse;
     //     }
     // });
-
-    console.log(feature);
     
     const markerImg = document.createElement('img');
     
@@ -104,6 +102,10 @@ let map = null;
 async function initMap() {
     
     if (map !== null) {
+
+        location.center = map.center;
+        location.zoom = map.zoom;
+
         map.destroy();
     }
 
@@ -154,13 +156,11 @@ async function initMap() {
             geometry: {type: 'Point', coordinates: [point.coordinates.lon, point.coordinates.lat]},
             properties: {
                 logo: point.logo,
-                is_big_map_photo: true
+                is_big_map_photo: point.is_big_map_photo
             }
         });
     });
-
-    // console.log(mapPoints);
-
+    
     // const points2 = [{
     //     type: 'Feature',
     //     id: 1,
@@ -181,8 +181,6 @@ async function initMap() {
     // }];
 
     // mapPoints = points2;
-
-    // console.log(mapPoints);
 
     const clusterer = new YMapClusterer({
         method: clusterByGrid({gridSize: 64}),

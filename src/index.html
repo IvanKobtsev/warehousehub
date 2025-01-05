@@ -16,7 +16,7 @@
     <title>WarehouseHub</title>
 </head>
 
-<body>
+<body class="loading">
     <header class="header">
         <div class="header__nav-wrapper">
             <a href="/"><img src="/img/static/wh-logo.png" class="wh-logo"></img></a>
@@ -33,19 +33,13 @@
     <section id="mainSection" class="section">
         <div class="section__container">
             <h2 id="mainSectionHeader" class="section__header">
-                Мы поможем найти<br>
-                <span class="highlighted-text">склад твоей мечты</span>
+                Загрузка...
             </h2>
             <div id="mainSectionText" class="section__text">
-                Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст 
-                Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст
-                Вот тут нужен какой-то под текст Вот тут нужен какой-то под текст Вот тут нужен какой-то под
+                
             </div>
             <div id="mainSectionDescriptionCards" class="main-points-container">
-                <div class="main-points-container__point">База 25 тыс. складов</div>
-                <div class="main-points-container__point">Поддержка 24/7</div>
-                <div class="main-points-container__point">Нашёл — написал</div>
-                <div class="main-points-container__point">Не знаешь, что выбрать — мы поможем</div>
+                
             </div>
         </div>
     
@@ -72,8 +66,25 @@
                         <div class="input-filters__selectable-filters"></div>
                     </div>
                 </div>
+                <div class="range-wrapper">
+                    Площадь
+                    <div class="inline-input">
+                        от
+                        <div class="inline-range-wrapper"><input class="range range-square range-min" type="text" id="findWarehouseSectionSquareMinFilter" placeholder="0" /></div>
+                        до
+                        <div class="inline-range-wrapper"><input class="range range-square range-max" type="text" id="findWarehouseSectionSquareMaxFilter" placeholder="99999999" /></div>
+                    </div>
+                </div>
                 <div id="findWarehouseSectionPropertiesFilter" class="input-wrapper">
                     Свойства
+                    <div class="input-filters"><div class="input-filters__add-filter"></div><div class="no-filter">[без фильтра]</div></div>
+                    <div class="input-filters-selecter">
+                        <input class="input-filters__input" type="text" placeholder="Поиск свойства..." />
+                        <div class="input-filters__selectable-filters"></div>
+                    </div>
+                </div>
+                <div id="findWarehouseSectionClassFilter" class="input-wrapper">
+                    Класс склада
                     <div class="input-filters"><div class="input-filters__add-filter"></div><div class="no-filter">[без фильтра]</div></div>
                     <div class="input-filters-selecter">
                         <input class="input-filters__input" type="text" placeholder="Поиск свойства..." />
