@@ -29,6 +29,7 @@ body {
     &.loading {
         opacity: .5;
         overflow-y: hidden;
+        pointer-events: none;
 
         &::after {
             content: '';
