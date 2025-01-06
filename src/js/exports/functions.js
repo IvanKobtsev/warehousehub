@@ -416,6 +416,12 @@ async function loadMainData() {
         // FILTERS 
         const cityPropertyList = await fetchRequests.getCitiesPropertyList();
 
+        // KEYWORDS
+        var meta = document.createElement('meta');
+        meta.name = "keywords";
+        meta.content = cityPropertyList.keywords;
+        document.getElementsByTagName('head')[0].appendChild(meta);
+
         const selectablePropertyFilters = document.getElementById('findWarehouseSectionPropertiesFilter').querySelector('.input-filters__selectable-filters');
         document.getElementById('findWarehouseSectionPropertiesFilter').querySelector('.input-filters__input').addEventListener('input', filterByInnerText);
         document.getElementById('findWarehouseSectionPropertiesFilter').querySelector('.input-filters__input').value = '';

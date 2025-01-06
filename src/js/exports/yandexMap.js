@@ -1,6 +1,7 @@
 import * as functions from "./functions.js";
 import * as fetchRequests from "./fetchRequests.js";
 import { api } from "./links.js";
+import { showErrorDialog } from "./eventListeners.js";
 
 function getBounds(coordinates) {
     let minLat = Infinity,
@@ -35,6 +36,8 @@ try {
     await ymaps3.ready;
 }
 catch {
+    document.getElementsByTagName('body')[0].classList.remove('loading');
+    
     showErrorDialog();
 }
 

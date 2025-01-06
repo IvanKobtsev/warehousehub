@@ -21,18 +21,6 @@
             margin-top: 32px;
         }
     }
-    
-    &::after {
-        content: "";
-        position: absolute;
-        width: 617px;
-        height: 527px;
-        z-index: -1;
-        background: url('../img/svg/blot-main-page.svg');
-        right: 5px;
-        top: 8px;
-        background-repeat: no-repeat;
-    }
 }
 
 .main-points-container {
