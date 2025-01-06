@@ -27,11 +27,6 @@ function getBounds(coordinates) {
     ];
 }
 
-const location = {
-    center: [37.588144, 55.733842],
-    zoom: 13
-};
-
 try {
     await ymaps3.ready;
 }
@@ -39,6 +34,24 @@ catch {
     document.getElementsByTagName('body')[0].classList.remove('loading');
     
     showErrorDialog();
+}
+
+const location = {
+    center: [37.588144, 55.733842],
+    zoom: 13
+};
+
+function success(position) {
+    location.center = [position.coords.longitude, position.coords.latitude];
+    initMap(true);
+}
+
+function error() {
+    // alert("Sorry, no position available.");
+}
+
+if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(success, error);
 }
 
 const {YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapLayer, YMapFeatureDataSource, YMapMarker} = ymaps3;
@@ -96,12 +109,14 @@ function circle(count) {
 
 let map = null;
 
-async function initMap() {
-    
+async function initMap(resetLocation = false) {
+
     if (map !== null) {
 
-        location.center = map.center;
-        location.zoom = map.zoom;
+        if (!resetLocation) {
+            location.center = map.center;
+            location.zoom = map.zoom;
+        }
 
         map.destroy();
     }
