@@ -26,7 +26,7 @@
             overflow-x: scroll;
             padding: 0 64px;
             box-sizing: border-box;
-
+            padding-bottom: 10px;
         }
 
         // &::before {
@@ -129,19 +129,22 @@
         display: flex;
         justify-content: flex-start;
         align-items: start;
-        flex-wrap: wrap;
+        width: 100%;
+        flex-wrap: nowrap !important;
+        overflow: scroll;
         pointer-events: all !important;
     }
 
     &__property {
         margin-right: 16px;
-        margin-bottom: 16px;
+        margin-bottom: 8px;
         padding: 14px 18px;
         box-sizing: border-box;
         width: fit-content;
         height: fit-content;
         border-radius: 14px;
         border: 1px solid var(--main-text-color);
+        white-space: nowrap;
     }
 
     &__bottom-text {

@@ -15,8 +15,15 @@ html {
     --theme-color-second-transparent: #DCDAFF00;
     --telegram-color: #289FDB;
     --whatsapp-color: #40C451;
+    --scroll-thumb-color: #675CFF;
+    --scroll-track-color: transparent;
     background-color: var(--bg-color);
     font-family: "Inter", sans-serif;
+}
+
+div {
+    scrollbar-width: thin !important;
+    scrollbar-color: var(--scroll-thumb-color) var(--scroll-track-color) !important;
 }
 
 body {
