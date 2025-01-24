@@ -69,7 +69,8 @@ async function sendForm(event) {
             requester_email: domElements.addWarehouseFormEmail.value,
             requester_warehouse_name: domElements.addWarehouseFormWarehouseName.value,
             requester_warehouse_address: domElements.addWarehouseFormWarehouseAddress.value,
-            requester_comment: domElements.addWarehouseFormComment.value.length === 0 ? null : domElements.addWarehouseFormComment.value
+            requester_comment: domElements.addWarehouseFormComment.value.length === 0 ? null : domElements.addWarehouseFormComment.value,
+            promo_code: domElements.addWarehouseFormPromoCode.value
         });
 
         if (response.ok) {
@@ -79,7 +80,11 @@ async function sendForm(event) {
             // window.location.reload();
         }
         else {
-            showErrorDialog();
+            const error = await response.json();
+
+            console.log(error);
+
+            showErrorDialog(error.promo_code.detail);
         }
     }
 }
@@ -148,8 +153,14 @@ function showSentFormDialog() {
     document.getElementById('sentFormDialog').classList.remove('hidden');
 }
 
-function showErrorDialog() {
+function showErrorDialog(text = '') {
     document.getElementById('errorDialog').classList.remove('hidden');
+
+    if (text === '' || text === null || text === undefined) {
+        text = 'Попробуйте ещё раз позднее';
+    }
+    
+    document.getElementById('errorDialog').querySelector('.modal-message__text').innerText = text;
 }
 
 export { updateNav, cancelInvalidStatus, showErrorDialog, showSentFormDialog }

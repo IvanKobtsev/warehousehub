@@ -68,4 +68,16 @@ async function getCitiesPropertyList() {
     }
 }
 
-export { getMainData, sendAddWarehouseForm, getWarehouseData, getWarehousesPage, getCitiesPropertyList, getAllWarehouses }
+async function getWarehousesCoordinates() {
+    
+    const response = await fetch(links.api + 'warehouses-coordinates');
+
+    if (response.ok) {
+        return (await response.json()).results;
+    }
+    else {
+        showErrorDialog();
+    }
+}
+
+export { getMainData, sendAddWarehouseForm, getWarehouseData, getWarehousesPage, getCitiesPropertyList, getAllWarehouses, getWarehousesCoordinates }
