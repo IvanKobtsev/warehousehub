@@ -356,16 +356,28 @@ async function loadMainData() {
                 id: cardData.id,
                 coordinates: cardData.coordinates,
                 logo: cardData.logo,
-                is_big_map_photo: cardData.is_big_map_photo
+                is_big_map_photo: cardData.is_big_map_photo,
+                is_trust_marked: cardData.is_trust_marked,
+                is_colored: cardData.is_colored
             });
 
             const newCard = newCardTemplate.cloneNode(true);
 
+            if (cardData.is_colored) {
+                newCard.classList.add('colored');
+            }
+
             if (cardData.logo === null) {
-                newCard.querySelector('.warehouse-card__icon').remove();
+                newCard.querySelector('.warehouse-card__icon').classList.add('hidden');
             }
             else {
-                newCard.querySelector('.warehouse-card__icon').src = links.api + cardData.logo.substring(1);
+                const icon = newCard.querySelector('.warehouse-card__icon');
+                icon.classList.remove('hidden');
+                icon.src = links.api + cardData.logo.substring(1);
+
+                if (cardData.is_trust_marked) {
+                    icon.classList.add('trusted');
+                }
             }
 
             newCard.querySelector('.warehouse-card__name').innerText = cardData.title;
@@ -483,11 +495,25 @@ async function openWarehouseDetails(warehouseId) {
     const warehouseData = await fetchRequests.getWarehouseData(warehouseId);
 
     warehouseDetailsModalDialog.classList.remove('hidden');
+    document.getElementById('fullCardContacts').classList.remove('hidden');
+
+    // if (warehouseData.is_colored) {
+        
+    // }
 
     // HEADER
     if (warehouseData.logo !== null) {
-        document.getElementById('fullCardIcon').classList.remove('hidden');
-        document.getElementById('fullCardIcon').src = links.api + warehouseData.logo.substring(1);
+        const icon = document.getElementById('fullCardIcon');
+
+        icon.classList.remove('hidden');
+        icon.src = links.api + warehouseData.logo.substring(1);
+
+        if (warehouseData.is_trust_marked) {
+            icon.classList.add('trusted');
+        }
+        else {
+            icon.classList.remove('trusted');
+        }
     }
     else {
         document.getElementById('fullCardIcon').classList.add('hidden');
@@ -580,7 +606,7 @@ async function openWarehouseDetails(warehouseId) {
         }
     }
     else {
-        document.getElementById('fullCardContacts').remove();
+        document.getElementById('fullCardContacts').classList.add('hidden');
     }
 
     // PHOTOS
@@ -657,11 +683,19 @@ async function loadWarehousesPage(query = null, displayInUrl = true) {
     warehousesPagination.results.forEach(cardData => {
         const newCard = newCardTemplate.cloneNode(true);
 
+        if (cardData.is_colored) {
+            newCard.classList.add('colored');
+        }
+
         if (cardData.logo === null) {
             newCard.querySelector('.warehouse-card__icon').remove();
         }
         else {
             newCard.querySelector('.warehouse-card__icon').src = links.api + cardData.logo.substring(1);
+
+            if (cardData.is_trust_marked) {
+                newCard.querySelector('.warehouse-card__icon').classList.add('trusted');
+            }
         }
 
         newCard.querySelector('.warehouse-card__name').innerText = cardData.title;
@@ -738,7 +772,9 @@ async function loadWarehousesPage(query = null, displayInUrl = true) {
             id: warehouse.id,
             coordinates: warehouse.coordinates,
             is_big_map_photo: warehouse.is_big_map_photo,
-            logo: warehouse.logo
+            logo: warehouse.logo,
+            is_colored: warehouse.is_colored,
+            is_trust_marked: warehouse.is_trust_marked
         });
     });
 

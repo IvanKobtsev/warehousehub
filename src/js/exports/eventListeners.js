@@ -76,13 +76,11 @@ async function sendForm(event) {
         if (response.ok) {
             showSentFormDialog();
             domElements.addWarehouseFormName.value = domElements.addWarehouseFormEmail.value = domElements.addWarehouseFormWarehouseName.value = 
-            domElements.addWarehouseFormWarehouseAddress.value = domElements.addWarehouseFormComment.value = "";
+            domElements.addWarehouseFormWarehouseAddress.value = domElements.addWarehouseFormComment.value = domElements.addWarehouseFormPromoCode.value = "";
             // window.location.reload();
         }
         else {
             const error = await response.json();
-
-            console.log(error);
 
             showErrorDialog(error.promo_code.detail);
         }

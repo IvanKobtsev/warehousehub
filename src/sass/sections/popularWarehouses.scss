@@ -82,16 +82,35 @@
     box-sizing: border-box;
     transition: .2s all;
     cursor: pointer;
+    
+    &.colored {
+        background-color: #F1F0FF;
+        border: 4px solid #675CFF;
+    }
 
     div {
         pointer-events: none;
     }
 
     &__header {
+        position: relative;
         display: flex;
         justify-content: flex-start;
         align-items: center;
         height: 60px;
+
+        &:has(.trusted) {
+            &::after {
+                content: '';
+                background-image: url('../img/svg/verified.svg');
+                background-size: cover;
+                width: 36px;
+                height: 36px;
+                position: absolute;
+                top: 0px;
+                left: 45px;
+            }
+        }
     }
 
     &__icon {
@@ -104,6 +123,12 @@
 
         &.hidden {
             display: none;
+        }
+
+        &.trusted {
+            position: relative;
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .3);
+            margin-right: 36px;
         }
     }
 

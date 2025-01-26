@@ -34,6 +34,10 @@
         div {
             pointer-events: all;
         }
+
+        &__icon {
+            box-shadow: none !important;
+        }
     
         &:active {
             scale: 1;
@@ -44,6 +48,10 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 32px;
+
+            &.hidden {
+                display: none;
+            }
         }
 
         &__manager-info {

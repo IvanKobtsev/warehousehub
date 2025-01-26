@@ -67,6 +67,9 @@ async function markerClick(e) {
 
 const marker = (feature) => {
     
+    const markerWrapper = document.createElement('div');
+    markerWrapper.className = 'map-point-wrapper';
+
     const markerImg = document.createElement('img');
     
     if (feature.properties.is_big_map_photo) {
@@ -77,14 +80,24 @@ const marker = (feature) => {
         markerImg.className = 'map-point';
     }
 
+    if (feature.properties.is_colored) {
+        markerImg.classList.add('colored');
+    }
+
+    if (feature.properties.is_trust_marked) {
+        markerImg.classList.add('trusted');
+    }
+
     markerImg.warehouseId = feature.id;
     markerImg.addEventListener('click', markerClick);
+
+    markerWrapper.appendChild(markerImg);
 
     return new YMapMarker(
         {
             coordinates: feature.geometry.coordinates
         },
-        markerImg
+        markerWrapper
     );
 };
 
@@ -155,7 +168,9 @@ async function initMap(resetLocation = false) {
                 geometry: {type: 'Point', coordinates: [point.coordinates.lon, point.coordinates.lat]},
                 properties: {
                     logo: point.logo,
-                    is_big_map_photo: point.is_big_map_photo
+                    is_big_map_photo: point.is_big_map_photo,
+                    is_trust_marked: point.is_trust_marked,
+                    is_colored: point.is_colored
                 }
             });
         }
@@ -168,7 +183,9 @@ async function initMap(resetLocation = false) {
             geometry: {type: 'Point', coordinates: [point.coordinates.lon, point.coordinates.lat]},
             properties: {
                 logo: point.logo,
-                is_big_map_photo: point.is_big_map_photo
+                is_big_map_photo: point.is_big_map_photo,
+                is_trust_marked: point.is_trust_marked,
+                is_colored: point.is_colored
             }
         });
     });
