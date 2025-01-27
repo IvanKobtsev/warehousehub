@@ -383,9 +383,15 @@ async function loadMainData() {
             newCard.querySelector('.warehouse-card__name').innerText = cardData.title;
             newCard.querySelector('.warehouse-card__address').innerText = cardData.address;
 
-            if (cardData.description !== null && cardData.description.length > 300) {
+            let shortedCount = 300;
+
+            if (window.innerWidth < 940) {
+                shortedCount = 200;
+            }
+
+            if (cardData.description !== null && cardData.description.length > shortedCount) {
                 newCard.querySelector('.warehouse-card__bottom-text').classList.add('shorted');
-                newCard.querySelector('.warehouse-card__bottom-text').innerText = cardData.description.substring(0, 300).trim();
+                newCard.querySelector('.warehouse-card__bottom-text').innerText = cardData.description.substring(0, shortedCount).trim();
             }
             else {
                 newCard.querySelector('.warehouse-card__bottom-text').innerText = cardData.description;
