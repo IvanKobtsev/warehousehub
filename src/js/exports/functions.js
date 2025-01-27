@@ -484,6 +484,7 @@ async function loadMainData() {
         await reloadWarehousesPage(false);
 
         document.getElementsByTagName('body')[0].classList.remove('loading');
+        document.getElementsByTagName('html')[0].classList.remove('loading');
          
         // FIND WAREHOUSES
         warehousesList = await fetchRequests.getWarehousesCoordinates();

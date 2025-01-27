@@ -15,10 +15,15 @@ html {
     --theme-color-second-transparent: #DCDAFF00;
     --telegram-color: #289FDB;
     --whatsapp-color: #40C451;
-    --scroll-thumb-color: #675CFF;
+    --scroll-thumb-color: #675CFF00;
     --scroll-track-color: transparent;
     background-color: var(--bg-color);
     font-family: "Inter", sans-serif;
+    overflow-y: scroll;
+
+    &.loading {
+        overflow-y: hidden;
+    }
 }
 
 div {
@@ -31,11 +36,10 @@ body {
     margin-top: 80px;
     box-sizing: border-box;
     overflow: hidden;
-    overflow-y: scroll;
+    width: 100vw;
 
     &.loading {
         opacity: .5;
-        overflow-y: hidden;
         pointer-events: none;
 
         &::after {
@@ -262,18 +266,27 @@ body {
     }
 }
 
-.map-point-wrapper:has(.trusted) {
-    position: relative;
-    translate: -50% -50%;
-    &::after {
-        content: '';
-        background-image: url('../img/svg/verified.svg');
-        background-size: cover;
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        top: 0px;
-        right: -16px;
+.map-point-wrapper {
+    &:has(.trusted) {
+        position: relative;
+        translate: -50% -50%;
+        &::after {
+            content: '';
+            background-image: url('../img/svg/verified.svg');
+            background-size: cover;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top: 0px;
+            right: -16px;
+        }
+    }
+
+    &:has(.map-point.trusted) {
+        &::after {
+            scale: .7;
+            translate: -25% -25%;
+        }
     }
 }
 

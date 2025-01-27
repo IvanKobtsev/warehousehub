@@ -103,7 +103,8 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        height: 60px;
+        min-height: 60px;
+        height: fit-content;
 
         &:has(.trusted) {
             &::after {
