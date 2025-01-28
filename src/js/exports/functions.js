@@ -502,7 +502,6 @@ async function openWarehouseDetails(warehouseId) {
     const warehouseData = await fetchRequests.getWarehouseData(warehouseId);
 
     warehouseDetailsModalDialog.classList.remove('hidden');
-    document.getElementById('fullCardContacts').classList.remove('hidden');
 
     // if (warehouseData.is_colored) {
         
@@ -548,72 +547,95 @@ async function openWarehouseDetails(warehouseId) {
     document.getElementById('fullCardGreyText').innerText = warehouseData.description;
 
     // MANAGER
+    const contactsDiv = document.getElementById('fullCardContacts');
+
+    const managerDiv = document.getElementById('fullCardManager');
+    if (managerDiv !== null) managerDiv.remove();
+
     if (warehouseData.manager.last_name !== null && warehouseData.manager.first_name !== null) {
 
-        document.getElementById('fullCardManagerName').innerText = 
+        const managerDiv = document.createElement('div');
+        managerDiv.className = 'warehouse-card__manager-info';
+        managerDiv.id = 'fullCardManager';
+    
+        const managerPhoto = document.createElement('img');
+        managerPhoto.className = 'warehouse-card__manager-photo';
+        managerPhoto.src = '/img/static/photo-profile.png';
+
+        const managerInfo = document.createElement('div');
+        managerInfo.className = 'warehouse-card__manager-text-info';
+    
+        const managerName = document.createElement('div');
+        managerName.className = 'warehouse-card__manager-name';
+        managerName.innerText = 
         warehouseData.manager.last_name + " " + warehouseData.manager.first_name + 
         (warehouseData.manager.patronymic === null ? "" : " " + warehouseData.manager.patronymic);
 
-        const contactsDiv = document.getElementById('fullCardContacts');
+        const managerPosition = document.createElement('div');
+        managerPosition.className = 'warehouse-card__manager-position';
+        managerPosition.innerText = warehouseData.manager.position;
 
-        const phoneAndEmailDiv = contactsDiv.querySelector('.warehouse-card__phone-and-email');
-        if (phoneAndEmailDiv !== null) phoneAndEmailDiv.remove();
-
-        if (warehouseData.manager.email !== null || warehouseData.manager.phone !== null) {
-
-            const newPhoneAndEmailDiv = document.createElement('div');
-            newPhoneAndEmailDiv.className = 'warehouse-card__phone-and-email';
-
-            if (warehouseData.manager.phone !== null) {
-                const newPhoneDiv = document.createElement('div');
-                newPhoneDiv.className = 'warehouse-card__phone copiable';
-                newPhoneDiv.innerText = warehouseData.manager.phone;
-                newPhoneDiv.addEventListener('click', clickOnCopy);
-                newPhoneAndEmailDiv.appendChild(newPhoneDiv);
-            }
-
-            if (warehouseData.manager.email !== null) {
-                const newEmailDiv = document.createElement('div');
-                newEmailDiv.className = 'warehouse-card__email copiable';
-                newEmailDiv.innerText = warehouseData.manager.email;
-                newEmailDiv.addEventListener('click', clickOnCopy);
-                newPhoneAndEmailDiv.appendChild(newEmailDiv);
-            }
-
-            contactsDiv.appendChild(newPhoneAndEmailDiv);
-        }
-
-        const socialLinksDiv = contactsDiv.querySelector('.warehouse-card__social-links');
-        if (socialLinksDiv !== null) socialLinksDiv.remove();
-
-        if (warehouseData.manager.telegram !== null || warehouseData.manager.whatsapp !== null) {
-
-            const newSocialLinksDiv = document.createElement('div');
-            newSocialLinksDiv.className = 'warehouse-card__social-links';
-            
-            if (warehouseData.manager.telegram !== null) {
-                const newTelegramDiv = document.createElement('a');
-                newTelegramDiv.className = 'warehouse-card__tg-link';
-                newTelegramDiv.innerText = warehouseData.manager.telegram;
-                newTelegramDiv.setAttribute('href', warehouseData.manager.telegram);
-                newTelegramDiv.setAttribute('target', '_blank');
-                newSocialLinksDiv.appendChild(newTelegramDiv);
-            }
-
-            if (warehouseData.manager.whatsapp !== null) {
-                const newWhatsappDiv = document.createElement('a');
-                newWhatsappDiv.className = 'warehouse-card__wa-link';
-                newWhatsappDiv.innerText = warehouseData.manager.whatsapp;
-                newWhatsappDiv.setAttribute('href', 'https://wa.me/' + warehouseData.manager.whatsapp.substring(1));
-                newWhatsappDiv.setAttribute('target', '_blank');
-                newSocialLinksDiv.appendChild(newWhatsappDiv);
-            }
-
-            contactsDiv.appendChild(newSocialLinksDiv);
-        }
+        managerInfo.appendChild(managerName);
+        managerInfo.appendChild(managerPosition);
+        managerDiv.appendChild(managerPhoto);
+        managerDiv.appendChild(managerInfo);
+        contactsDiv.appendChild(managerDiv);
     }
-    else {
-        document.getElementById('fullCardContacts').classList.add('hidden');
+
+    const phoneAndEmailDiv = contactsDiv.querySelector('.warehouse-card__phone-and-email');
+    if (phoneAndEmailDiv !== null) phoneAndEmailDiv.remove();
+
+    if (warehouseData.manager.email !== null || warehouseData.manager.phone !== null) {
+
+        const newPhoneAndEmailDiv = document.createElement('div');
+        newPhoneAndEmailDiv.className = 'warehouse-card__phone-and-email';
+
+        if (warehouseData.manager.phone !== null) {
+            const newPhoneDiv = document.createElement('div');
+            newPhoneDiv.className = 'warehouse-card__phone copiable';
+            newPhoneDiv.innerText = warehouseData.manager.phone;
+            newPhoneDiv.addEventListener('click', clickOnCopy);
+            newPhoneAndEmailDiv.appendChild(newPhoneDiv);
+        }
+
+        if (warehouseData.manager.email !== null) {
+            const newEmailDiv = document.createElement('div');
+            newEmailDiv.className = 'warehouse-card__email copiable';
+            newEmailDiv.innerText = warehouseData.manager.email;
+            newEmailDiv.addEventListener('click', clickOnCopy);
+            newPhoneAndEmailDiv.appendChild(newEmailDiv);
+        }
+
+        contactsDiv.appendChild(newPhoneAndEmailDiv);
+    }
+
+    const socialLinksDiv = contactsDiv.querySelector('.warehouse-card__social-links');
+    if (socialLinksDiv !== null) socialLinksDiv.remove();
+
+    if (warehouseData.manager.telegram !== null || warehouseData.manager.whatsapp !== null) {
+
+        const newSocialLinksDiv = document.createElement('div');
+        newSocialLinksDiv.className = 'warehouse-card__social-links';
+        
+        if (warehouseData.manager.telegram !== null) {
+            const newTelegramDiv = document.createElement('a');
+            newTelegramDiv.className = 'warehouse-card__tg-link';
+            newTelegramDiv.innerText = warehouseData.manager.telegram;
+            newTelegramDiv.setAttribute('href', warehouseData.manager.telegram);
+            newTelegramDiv.setAttribute('target', '_blank');
+            newSocialLinksDiv.appendChild(newTelegramDiv);
+        }
+
+        if (warehouseData.manager.whatsapp !== null) {
+            const newWhatsappDiv = document.createElement('a');
+            newWhatsappDiv.className = 'warehouse-card__wa-link';
+            newWhatsappDiv.innerText = warehouseData.manager.whatsapp;
+            newWhatsappDiv.setAttribute('href', 'https://wa.me/' + warehouseData.manager.whatsapp.substring(1));
+            newWhatsappDiv.setAttribute('target', '_blank');
+            newSocialLinksDiv.appendChild(newWhatsappDiv);
+        }
+
+        contactsDiv.appendChild(newSocialLinksDiv);
     }
 
     // PHOTOS
